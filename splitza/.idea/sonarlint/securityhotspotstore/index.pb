@@ -30,9 +30,8 @@ q
 Asrc/main/java/com/example/splitza/controller/GrupoController.java,9/6/96a0a022385f921d4b774c99be5bf6cd0b075bec
 d
 4src/main/java/com/example/splitza/model/Despesa.java,d/a/dae9c25ebb6dc3db6a6294b604517696b3fdc861
-g
-7src/main/java/com/example/splitza/view/tela_entrar.fxml,5/6/5633f29e219d789ffe60681fe653925c5826d01c
 i
 9src/main/java/com/example/splitza/SplitzaApplication.java,5/3/536218455ab2bb1e21eaca2372ca0ba966f8efab
-b
-2src/main/java/com/example/splitza/view/painel.fxml,f/e/fe2bf250a7437f7f99c6125989454990c88b4530
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
