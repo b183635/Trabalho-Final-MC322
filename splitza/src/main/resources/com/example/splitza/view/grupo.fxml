@@ -18,18 +18,8 @@
             <Font name="Bodoni MT" size="44.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-14.0" layoutY="-21.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="493.0" layoutY="-27.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="600.0" layoutY="437.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-26.0" layoutY="-27.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
       <Label layoutX="26.0" layoutY="149.0" text="membros">
          <font>
             <Font name="Bodoni MT" size="25.0" />

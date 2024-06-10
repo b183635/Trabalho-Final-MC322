@@ -40,7 +40,10 @@ public class LerUsuarios implements I_Arquivo<Usuario> {
                 String senha = usuarioElement.getElementsByTagName("senha").item(0).
                         getTextContent();
 
-                Usuario user = new Usuario(nome, email, senha);
+                int saldo = Integer.parseInt(usuarioElement.getElementsByTagName("saldo").item(0).
+                        getTextContent());
+
+                Usuario user = new Usuario(nome, email, senha, saldo);
 
                 usuarios.add(user);
             }
@@ -80,6 +83,11 @@ public class LerUsuarios implements I_Arquivo<Usuario> {
             Element senhaElement = document.createElement("senha");
             senhaElement.appendChild(document.createTextNode(usuario.getSenha()));
             rootElement.appendChild(senhaElement);
+
+            // Adiciona o elemento "saldo"
+            Element saldoElement = document.createElement("saldo");
+            saldoElement.appendChild(document.createTextNode(String.valueOf(usuario.getSaldo())));
+            rootElement.appendChild(saldoElement);
 
 
             // Cria o TransformerFactory e o Transformer para transformar o documento em XML

@@ -13,24 +13,24 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.splitza.controller.AdicionarDespesaController">
    <children>
-      <Button layoutX="150.0" layoutY="278.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" text="adicionar despesa">
+      <Button layoutX="150.0" layoutY="278.0" mnemonicParsing="false" onAction="#onAdicionarButtonClick" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" text="adicionar despesa">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <TextField layoutX="150.0" layoutY="167.0" />
-      <Label layoutX="86.0" layoutY="170.0" text="nome">
+      <TextField fx:id="nomeTxt" layoutX="150.0" layoutY="167.0" />
+      <Label layoutX="72.0" layoutY="170.0" text="nome">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="86.0" layoutY="217.0" text="valor   R$">
+      <Label layoutX="72.0" layoutY="217.0" text="valor   R$">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="162.0" layoutY="79.0" text="Adicionar despesa">
+      <Label layoutX="162.0" layoutY="97.0" text="Adicionar despesa">
          <font>
             <Font name="Bodoni MT" size="35.0" />
          </font>
@@ -40,20 +40,14 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-14.0" layoutY="-21.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
       <Hyperlink layoutX="360.0" layoutY="346.0">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <PasswordField layoutX="150.0" layoutY="213.0" />
+      <TextField fx:id="valorTxt" layoutX="150.0" layoutY="215.0" />
       <Circle fill="#ff821f" layoutX="516.0" layoutY="40.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle fill="#ff821f" layoutX="516.0" layoutY="40.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
-      <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="596.0" layoutY="324.0" radius="33.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle fill="#ff821f" layoutX="-15.0" layoutY="330.0" radius="51.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle fill="#ff821f" layoutX="516.0" layoutY="40.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle fill="#ff821f" layoutX="516.0" layoutY="40.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
@@ -62,24 +56,24 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="411.0" layoutY="167.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" styleClass="colo" />
+      <ChoiceBox layoutX="421.0" layoutY="167.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" styleClass="colo" fx:id="membrosChoiceBox"/>
       <Label layoutX="327.0" layoutY="217.0" text="dividido por">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <ListView layoutX="414.0" layoutY="211.0" prefHeight="160.0" prefWidth="143.0" />
-      <ImageView fitHeight="259.0" fitWidth="274.0" layoutX="-51.0" layoutY="-29.0">
+      <ListView layoutX="425.0" layoutY="211.0" prefHeight="160.0" prefWidth="143.0" fx:id="membrosListView"/>
+      <ImageView fitHeight="259.0" fitWidth="240.0" layoutX="-33.0" layoutY="-30.0">
          <image>
-            <Image url="@../../../../Downloads/SPLITZA__2_-removebg-preview.png" />
+            <Image url="@SPLITZA__2_-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView blendMode="SRC_ATOP" fitHeight="143.0" fitWidth="161.0" layoutX="6.0" layoutY="263.0">
          <image>
-            <Image url="@../../../../Downloads/SPLITZA__1_-removebg-preview.png" />
+            <Image url="@SPLITZA__1_-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button layoutX="196.0" layoutY="342.0" mnemonicParsing="false" style="-fx-background-color: FFD5AA;" text="voltar">
+      <Button layoutX="196.0" layoutY="342.0" mnemonicParsing="false" onAction="#onVoltarButtonClick" style="-fx-background-color: FFD5AA;" text="voltar">
          <font>
             <Font size="14.0" />
          </font>

@@ -15,11 +15,6 @@
             <Font name="Bodoni MT" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-14.0" layoutY="-21.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
       <Circle fill="#ff821f" layoutX="506.0" layoutY="30.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle fill="#ff821f" layoutX="-21.0" layoutY="334.0" radius="67.0" stroke="#ff821f" strokeType="INSIDE" />
       <Label layoutX="65.0" layoutY="166.0" text="gastos totais do grupo">

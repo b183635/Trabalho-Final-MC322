@@ -49,10 +49,5 @@
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="561.0" layoutY="268.0" radius="50.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="77.0" layoutY="342.0" radius="45.0" stroke="#ff821f" strokeType="INSIDE" />
       <PasswordField fx:id="senhaText" layoutX="234.0" layoutY="284.0" />
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-4.0" layoutY="-11.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

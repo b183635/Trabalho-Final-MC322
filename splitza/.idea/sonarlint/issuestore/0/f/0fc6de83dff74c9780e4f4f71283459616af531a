@@ -1,12 +1,14 @@
 
-g	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÔìÜÆÿ1
+g	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ƒ®Àşÿ1
 E
-java:S1604%"(Make this anonymous inner class a lambda(»â Ô8ÖìÜÆÿ1
+java:S1604&"(Make this anonymous inner class a lambda(»â Ô8„®Àşÿ1
 `
-java:S1128">Remove this unused import 'com.example.splitza.model.Usuario'.(Ğœ¤¶ùÿÿÿÿ8³»áÖÿ1
+java:S1128">Remove this unused import 'com.example.splitza.model.Usuario'.(Ğœ¤¶ùÿÿÿÿ8ï»Âşÿ1
 r
-java:S1128"URemove this unused import 'com.example.splitza.utilitarios.leitura.impl.LerUsuarios'.(ªÊŒ8´»áÖÿ1
+java:S1128"URemove this unused import 'com.example.splitza.utilitarios.leitura.impl.LerUsuarios'.(ªÊŒ8ğ»Âşÿ1
+Y
+java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8˜ÕÂşÿ1
 \
-java:S1128"?Remove this unused import 'javafx.scene.control.PasswordField'.(êú´Ë8µ»áÖÿ1
+java:S1128"?Remove this unused import 'javafx.scene.control.PasswordField'.(êú´Ë8ğ»Âşÿ1
 X
-java:S1128";Remove this unused import 'javafx.scene.control.TextField'.(¨¢¤¶8µ»áÖÿ1
+java:S1128";Remove this unused import 'javafx.scene.control.TextField'.(¨¢¤¶8ğ»Âşÿ1

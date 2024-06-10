@@ -31,7 +31,7 @@ public class CadastrarController {
         String nome = nomeText.getText();
         String email = emailText.getText();
         String senha = senhaText.getText();
-        Usuario usuario = new Usuario(nome, email, senha);
+        Usuario usuario = new Usuario(nome, email, senha, 0);
         LerUsuarios lerUsuarios = new LerUsuarios();
         lerUsuarios.gravarArquivo("usuarios.xml", usuario);
         redirectWindow(event, "/com/example/splitza/view/painel.fxml");

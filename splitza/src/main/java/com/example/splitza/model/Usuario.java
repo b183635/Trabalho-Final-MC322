@@ -4,11 +4,13 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private double saldo;
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(String nome, String email, String senha, int saldo) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.saldo = saldo;
     }
 
     public String getNome() {
@@ -33,6 +35,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
 

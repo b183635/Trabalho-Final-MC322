@@ -52,29 +52,9 @@
       <ChoiceBox fx:id="myChoiceBox" layoutX="21.0" layoutY="200.0" prefWidth="150.0" />
       <Line endX="1.0" endY="222.33334350585938" layoutX="401.0" layoutY="159.0" startX="1.0" startY="1.0000152587890625" />
       <Circle fill="#ff821f" layoutX="28.0" layoutY="263.0" radius="24.0" stroke="#ff821f" strokeType="INSIDE" />
-      <ImageView fitHeight="129.0" fitWidth="234.0" layoutX="338.0" layoutY="-13.0">
-         <image>
-            <Image url="@Design_sem_nome__5_-removebg-preview.png" />
-         </image>
-      </ImageView>
       <ListView fx:id="voceDeveListView" layoutX="228.0" layoutY="171.0" prefHeight="200.0" prefWidth="158.0" />
       <ListView fx:id="devemVoceListView" layoutX="430.0" layoutY="171.0" prefHeight="200.0" prefWidth="158.0" />
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-4.0" layoutY="-4.0">
-         <image>
-            <Image url="@SPLITZA-removebg-preview.png" />
-         </image>
-      </ImageView>
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="96.0" layoutY="433.0" radius="54.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="362.0" layoutY="-23.0" radius="54.0" stroke="#ff821f" strokeType="INSIDE" />
-      <Label layoutX="513.0" layoutY="42.0" text="usuário">
-         <font>
-            <Font name="Bell MT" size="15.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="112.0" fitWidth="200.0" layoutX="411.0" layoutY="8.0">
-         <image>
-            <Image url="@Design_sem_nome__5_-removebg-preview.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>
