@@ -2,6 +2,8 @@ package com.example.splitza.controller;
 
 import com.example.splitza.model.Grupo;
 import com.example.splitza.model.Usuario;
+import com.example.splitza.model.UsuarioAbstrato;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.beans.value.ChangeListener;
@@ -28,9 +30,23 @@ public class PainelController {
     private ChoiceBox<String> myChoiceBox;
 
     @FXML
+    private Label olaLbl;
+
+    @FXML
     public void initialize() {
         LerGrupos lerGrupos = new LerGrupos();
         List<Grupo> grupos = lerGrupos.lerArquivo("grupos.xml");
+        LerUsuarios lerUsuarios = new LerUsuarios();
+        List<UsuarioAbstrato> usuarios = lerUsuarios.lerArquivo("usuarios.xml");
+        UsuarioLogado usuarioLogado = usuarios.stream()
+                .filter(u -> u instanceof UsuarioLogado && ((UsuarioLogado) u).isLogado())
+                .map(u -> (UsuarioLogado) u)
+                .findFirst()
+                .orElse(null);
+        if (Objects.nonNull(usuarioLogado)) {
+            olaLbl.setText("Olá, " + usuarioLogado.getNome());
+        }
+
         if (Objects.nonNull(grupos)) {
             grupos.forEach(grupo -> myChoiceBox.getItems().add(grupo.getNome()));
         }
@@ -56,11 +72,13 @@ public class PainelController {
 
     private void redirectWindow(String path, Stage janela, String chosenValue) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
-        loader.setControllerFactory(c -> {
-            GrupoController controller = new GrupoController();
-            controller.setGrupoValue(chosenValue);
-            return controller;
-        });
+        if (Objects.nonNull(chosenValue)){
+            loader.setControllerFactory(c -> {
+                GrupoController controller = new GrupoController();
+                controller.setGrupoValue(chosenValue);
+                return controller;
+            });
+        }
         Parent redirect = loader.load();
         Scene scene = new Scene(redirect);
         janela.setScene(scene);

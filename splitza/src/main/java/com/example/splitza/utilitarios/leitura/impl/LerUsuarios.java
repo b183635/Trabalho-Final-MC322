@@ -1,6 +1,8 @@
 package com.example.splitza.utilitarios.leitura.impl;
 
 import com.example.splitza.model.Usuario;
+import com.example.splitza.model.UsuarioAbstrato;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.I_Arquivo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,10 +19,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LerUsuarios implements I_Arquivo<Usuario> {
+public class LerUsuarios implements I_Arquivo<UsuarioAbstrato> {
     @Override
-    public List<Usuario> lerArquivo(String path) {
-        List<Usuario> usuarios = new ArrayList<>();
+    public List<UsuarioAbstrato> lerArquivo(String path) {
+        List<UsuarioAbstrato> usuarios = new ArrayList<>();
         try {
             File file = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -35,15 +37,28 @@ public class LerUsuarios implements I_Arquivo<Usuario> {
 
                 String nome = usuarioElement.getElementsByTagName("nome").item(0).
                         getTextContent();
-                String email = usuarioElement.getElementsByTagName("email").item(0).
-                        getTextContent();
-                String senha = usuarioElement.getElementsByTagName("senha").item(0).
-                        getTextContent();
-
-                int saldo = Integer.parseInt(usuarioElement.getElementsByTagName("saldo").item(0).
+                double saldo = Double.parseDouble(usuarioElement.getElementsByTagName("saldo").item(0).
                         getTextContent());
 
-                Usuario user = new Usuario(nome, email, senha, saldo);
+                UsuarioAbstrato user;
+                if (usuarioElement.getElementsByTagName("email").getLength() > 0 &&
+                    usuarioElement.getElementsByTagName("senha").getLength() > 0) {
+                    String email = usuarioElement.getElementsByTagName("email").item(0).
+                            getTextContent();
+                    String senha = usuarioElement.getElementsByTagName("senha").item(0).
+                            getTextContent();
+                    boolean logado = Boolean.parseBoolean(usuarioElement.getElementsByTagName("logado").item(0).
+                            getTextContent());
+                    user = UsuarioLogado.getInstance();
+                    ((UsuarioLogado) user).setEmail(email);
+                    ((UsuarioLogado) user).setSenha(senha);
+                    ((UsuarioLogado) user).setLogado(logado);
+                } else {
+                    user = new Usuario(nome, saldo);
+                }
+
+                user.setNome(nome);
+                user.setSaldo(saldo);
 
                 usuarios.add(user);
             }
@@ -56,51 +71,46 @@ public class LerUsuarios implements I_Arquivo<Usuario> {
     }
 
     @Override
-    public void gravarArquivo(String path, Usuario usuario) {
+    public void gravarArquivo(String path, UsuarioAbstrato usuario) {
         try {
-            // Cria o DocumentBuilderFactory e o DocumentBuilder
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 
-            // Cria um novo documento XML
             Document document = documentBuilder.newDocument();
 
-            // Cria o elemento raiz
             Element rootElement = document.createElement("Usuario");
             document.appendChild(rootElement);
 
-            // Adiciona o elemento "nome"
             Element nomeElement = document.createElement("nome");
             nomeElement.appendChild(document.createTextNode(usuario.getNome()));
             rootElement.appendChild(nomeElement);
 
-            // Adiciona o elemento "nome"
-            Element emailElement = document.createElement("email");
-            emailElement.appendChild(document.createTextNode(usuario.getEmail()));
-            rootElement.appendChild(emailElement);
-
-            // Adiciona o elemento "nome"
-            Element senhaElement = document.createElement("senha");
-            senhaElement.appendChild(document.createTextNode(usuario.getSenha()));
-            rootElement.appendChild(senhaElement);
-
-            // Adiciona o elemento "saldo"
             Element saldoElement = document.createElement("saldo");
             saldoElement.appendChild(document.createTextNode(String.valueOf(usuario.getSaldo())));
             rootElement.appendChild(saldoElement);
 
+            if (usuario instanceof UsuarioLogado) {
+                Element emailElement = document.createElement("email");
+                emailElement.appendChild(document.createTextNode(((UsuarioLogado) usuario).getEmail()));
+                rootElement.appendChild(emailElement);
 
-            // Cria o TransformerFactory e o Transformer para transformar o documento em XML
+                Element senhaElement = document.createElement("senha");
+                senhaElement.appendChild(document.createTextNode(((UsuarioLogado) usuario).getSenha()));
+                rootElement.appendChild(senhaElement);
+
+                Element logadoElement = document.createElement("logado");
+                logadoElement.appendChild(document.createTextNode(String.valueOf(((UsuarioLogado) usuario).isLogado())));
+                rootElement.appendChild(logadoElement);
+            }
+
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
-            // Cria a fonte DOM e o resultado Stream
             DOMSource domSource = new DOMSource(document);
             StreamResult streamResult = new StreamResult(new File(path));
 
-            // Transforma o documento em XML e grava no arquivo
             transformer.transform(domSource, streamResult);
         } catch (Exception e) {
             e.printStackTrace();

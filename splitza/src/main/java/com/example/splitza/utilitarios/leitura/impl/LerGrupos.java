@@ -1,5 +1,6 @@
 package com.example.splitza.utilitarios.leitura.impl;
 
+import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Grupo;
 import com.example.splitza.model.Usuario;
 import com.example.splitza.utilitarios.leitura.I_Arquivo;
@@ -42,11 +43,12 @@ public class LerGrupos implements I_Arquivo<Grupo> {
                     membrosGrupo.add(item.getTextContent());
                 }
 
-                Grupo grupo = new Grupo(nome, membrosGrupo);
+                Grupo grupo = new Grupo(nome, membrosGrupo, new ArrayList<>());
 
                 grupos.add(grupo);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
         return grupos;
@@ -54,6 +56,14 @@ public class LerGrupos implements I_Arquivo<Grupo> {
 
     @Override
     public void gravarArquivo(String path, Grupo grupo) {
+        File file = new File(path);
+        List<Grupo> grupos = new ArrayList<>();
+
+        if(file.exists()){
+            grupos = lerArquivo(path);
+        }
+        grupos.add(grupo);
+
         try {
             // Create the DocumentBuilderFactory and the DocumentBuilder
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -62,24 +72,25 @@ public class LerGrupos implements I_Arquivo<Grupo> {
             // Create a new XML document
             Document document = documentBuilder.newDocument();
 
-            // Create the root element
-            Element rootElement = document.createElement("Grupo");
+            Element rootElement = document.createElement("Grupos");
             document.appendChild(rootElement);
 
-            // Add the "nome" element
-            Element nomeElement = document.createElement("nome");
-            nomeElement.appendChild(document.createTextNode(grupo.getNome()));
-            rootElement.appendChild(nomeElement);
+            for(Grupo g : grupos){
+                Element grupoElement = document.createElement("Grupo");
+                rootElement.appendChild(grupoElement);
 
-            // Create the "membros" element
-            Element membrosElement = document.createElement("membros");
-            rootElement.appendChild(membrosElement);
+                Element nomeElement = document.createElement("nome");
+                nomeElement.appendChild(document.createTextNode(g.getNome()));
+                grupoElement.appendChild(nomeElement);
 
-            // Add a "membro" element for each member in the group
-            for (String membro : grupo.getMembros()) {
-                Element membroElement = document.createElement("membro");
-                membroElement.appendChild(document.createTextNode(membro));
-                membrosElement.appendChild(membroElement);
+                Element membrosElement = document.createElement("membros");
+                grupoElement.appendChild(membrosElement);
+
+                for(String membro : g.getMembros()){
+                    Element membroElement = document.createElement("membro");
+                    membroElement.appendChild(document.createTextNode(membro));
+                    membrosElement.appendChild(membroElement);
+                }
             }
 
             // Create the TransformerFactory and the Transformer to transform the document into XML

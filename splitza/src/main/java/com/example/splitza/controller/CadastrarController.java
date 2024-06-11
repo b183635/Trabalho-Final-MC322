@@ -1,6 +1,7 @@
 package com.example.splitza.controller;
 
 import com.example.splitza.model.Usuario;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +32,12 @@ public class CadastrarController {
         String nome = nomeText.getText();
         String email = emailText.getText();
         String senha = senhaText.getText();
-        Usuario usuario = new Usuario(nome, email, senha, 0);
+        UsuarioLogado usuario = UsuarioLogado.getInstance();
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        usuario.setSaldo(0.0);
+        usuario.setLogado(false);
         LerUsuarios lerUsuarios = new LerUsuarios();
         lerUsuarios.gravarArquivo("usuarios.xml", usuario);
         redirectWindow(event, "/com/example/splitza/view/painel.fxml");

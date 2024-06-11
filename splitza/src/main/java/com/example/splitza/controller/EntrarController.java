@@ -1,6 +1,7 @@
 package com.example.splitza.controller;
 
 import com.example.splitza.model.Usuario;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,20 +29,23 @@ public class EntrarController {
 
     @FXML
     protected void onEntrarButtonClick(ActionEvent event) throws IOException {
-        // verificar existencia do usuario, se existir ir para painel
         LerUsuarios lerUsuarios = new LerUsuarios();
         var usuarios = lerUsuarios.lerArquivo("usuarios.xml");
 
         boolean emailExiste = usuarios.stream()
-                .anyMatch(usuario -> usuario.getEmail().equals(emailText.getText()));
+                .filter(UsuarioLogado.class::isInstance)
+                .anyMatch(usuario -> ((UsuarioLogado) usuario).getEmail().equals(emailText.getText()));
 
         if (emailExiste) {
-            Usuario usuario = usuarios.stream()
-                    .filter(u -> u.getEmail().equals(emailText.getText()))
+            UsuarioLogado usuario = usuarios.stream()
+                    .filter(u -> u instanceof UsuarioLogado && ((UsuarioLogado) u).getEmail().equals(emailText.getText()))
+                    .map(u -> (UsuarioLogado) u)
                     .findFirst()
                     .orElse(null);
 
             if (usuario != null && usuario.getSenha().equals(senhaText.getText())) {
+                usuario.setLogado(true);
+                lerUsuarios.gravarArquivo("usuarios.xml", usuario);
                 redirectWindow(event, "/com/example/splitza/view/painel.fxml");
             } else {
                 incorretoLbl.setVisible(true);
