@@ -37,3 +37,13 @@ i
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 |
 Lsrc/main/java/com/example/splitza/controller/AdicionarDespesaController.java,1/6/1687f83056303f260de847136ef470c11c82e8b2
+j
+:src/main/java/com/example/splitza/model/UsuarioLogado.java,5/7/576dfe6b503eb20ede3c3a9d5231483674182779
+l
+<src/main/java/com/example/splitza/model/UsuarioAbstrato.java,3/1/3142c2b01fbac0a079cb825435f3623698ea4137
+{
+Ksrc/main/java/com/example/splitza/utilitarios/leitura/impl/LerDespesas.java,3/e/3ec22cd2070581ecf7e8bb44a953712b36d5f8ab
+f
+6src/main/java/com/example/splitza/model/Historico.java,1/7/17380c9ef4e19bdcc690dd07c51b00e6e54f5d2c
+H
+despesas-grupo-teste.xml,c/9/c90945007f6eb12442ca00b93d77ea6cea812719

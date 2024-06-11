@@ -1,9 +1,7 @@
 
+{
+java:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(şúÑˆøÿÿÿÿ8Ò¬Ò¨€2
+q
+java:S6201'"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(’“Ù‰8­Ùòº€2
 ‰
-java:S1130)"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(áó´è8ğœìÅÿ1
-`
-java:S1128">Remove this unused import 'com.example.splitza.model.Usuario'.(Ğœ¤¶ùÿÿÿÿ8ç“–Çÿ1
-r
-java:S1128"URemove this unused import 'com.example.splitza.utilitarios.leitura.impl.LerUsuarios'.(ªÊŒ8ç“–Çÿ1
-\
-java:S1128"?Remove this unused import 'javafx.scene.control.PasswordField'.(êú´Ë8ç“–Çÿ1
+java:S1130:"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(áó´è8Çùá™€2

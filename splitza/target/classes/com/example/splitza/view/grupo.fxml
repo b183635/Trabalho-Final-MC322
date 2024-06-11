@@ -51,11 +51,11 @@
             <Font name="Bodoni MT" size="25.0" />
          </font>
       </Label>
-      <TableView layoutX="200.0" layoutY="149.0" prefHeight="200.0" prefWidth="227.0" style="-fx-background-color: ffd5aa;">
+      <TableView layoutX="200.0" layoutY="149.0" prefHeight="200.0" prefWidth="227.0" style="-fx-background-color: ffd5aa;" fx:id="historicoTableView">
         <columns>
-          <TableColumn prefWidth="75.0" text="data" />
-          <TableColumn prefWidth="75.0" text="despesa" />
-            <TableColumn prefWidth="75.0" text="status" />
+          <TableColumn prefWidth="75.0" text="data" fx:id="dataTableColumn" />
+          <TableColumn prefWidth="75.0" text="despesa" fx:id="despesaTableColumn"/>
+            <TableColumn prefWidth="75.0" text="status" fx:id="statusTableColumn"/>
         </columns>
       </TableView>
       <ImageView fitHeight="259.0" fitWidth="274.0" layoutX="-41.0" layoutY="-6.0">

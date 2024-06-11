@@ -2,6 +2,7 @@ package com.example.splitza.controller;
 
 import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Usuario;
+import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +17,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class AdicionarDespesaController {
 
@@ -62,12 +66,16 @@ public class AdicionarDespesaController {
 
     @FXML
     protected void onAdicionarButtonClick(ActionEvent event) throws IOException {
+        LerDespesas lerDespesas = new LerDespesas();
         String nome = nomeTxt.getText();
         double valor = Double.parseDouble(valorTxt.getText().replace(",", "."));
-        Usuario pagante = new Usuario(membrosChoiceBox.getValue(), null, null, 0);
-        List<Usuario> devedores = membrosListView.getSelectionModel().getSelectedItems().stream().map(s -> new Usuario(s, null, null, 0)).toList();
-        Despesa despesa = new Despesa(nome, valor, pagante, devedores);
+        Usuario pagante = new Usuario(membrosChoiceBox.getValue(), 0);
+        List<Usuario> devedores = membrosListView.getSelectionModel().getSelectedItems().stream().map(s -> new Usuario(s, 0)).toList();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
+        Despesa despesa = new Despesa(nome, this.grupoValue, formatter.format(date), valor, pagante, devedores);
         calcularSaldos(despesa);
+        lerDespesas.gravarArquivo("despesas-grupo-" + this.grupoValue + ".xml", despesa);
         redirectWindow(event, "/com/example/splitza/view/grupo.fxml");
     }
 

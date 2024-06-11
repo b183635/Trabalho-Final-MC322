@@ -1,6 +1,11 @@
 package com.example.splitza.controller;
 
+import com.example.splitza.model.Despesa;
+import com.example.splitza.model.Grupo;
+import com.example.splitza.model.Historico;
+import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +14,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class GrupoController {
@@ -20,6 +30,18 @@ public class GrupoController {
 
     @FXML
     private ListView<String> membrosListView;
+
+    @FXML
+    private TableView<Historico> historicoTableView;
+
+    @FXML
+    private TableColumn<Historico, Date> dataTableColumn;
+
+    @FXML
+    private TableColumn<Historico, Despesa> despesaTableColumn;
+
+    @FXML
+    private TableColumn<Historico, String> statusTableColumn;
 
     private String grupoValue;
 
@@ -31,10 +53,19 @@ public class GrupoController {
     public void initialize() {
         nomeGrupoLabel.setText(grupoValue);
         LerGrupos lerGrupos = new LerGrupos();
-        lerGrupos.lerArquivo("grupos.xml").stream()
+        List<Grupo> grupos = lerGrupos.lerArquivo("grupos.xml");
+        LerDespesas lerDespesas = new LerDespesas();
+        List<Despesa> despesas = lerDespesas.lerArquivo("despesas-grupo-" + this.grupoValue + ".xml");
+        grupos.stream()
                 .filter(grupo -> grupo.getNome().equals(grupoValue))
                 .findFirst()
-                .ifPresent(grupo -> membrosListView.getItems().addAll(grupo.getMembros()));
+                .ifPresent(grupo -> {
+                    membrosListView.getItems().addAll(grupo.getMembros());
+                    if(Objects.nonNull(despesas)){
+                        grupo.getDespesas().addAll(despesas);
+                        atualizarTableHistorico(grupo);
+                    }
+                });
     }
 
     @FXML
@@ -44,6 +75,7 @@ public class GrupoController {
 
     @FXML
     protected void onVoltarButtonClick(ActionEvent event) throws IOException {
+        // gravar grupo
         redirectWindow(event, "/com/example/splitza/view/painel.fxml", 4);
     }
 
@@ -84,5 +116,19 @@ public class GrupoController {
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
         janela.setScene(scene);
         janela.show();
+    }
+
+    private void atualizarTableHistorico(Grupo grupo){
+        ObservableList<Historico> data = historicoTableView.getItems();
+
+        despesaTableColumn.setCellValueFactory(new PropertyValueFactory<>("despesa"));
+        dataTableColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
+        statusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        grupo.getDespesas().forEach(despesa -> {
+            // adicionar validacao do usuario logado
+            data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "teste"));
+        });
+
     }
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Grupo>
-  <nome>teste</nome>
-  <membros>
-    <membro>lucca</membro>
-    <membro>alicia</membro>
-    <membro>teste</membro>
-  </membros>
-</Grupo>
+<Grupos>
+  <Grupo>
+    <nome>Passeio</nome>
+    <membros>
+      <membro>abc</membro>
+      <membro>fulano</membro>
+      <membro>beltrano</membro>
+      <membro>ciclano</membro>
+    </membros>
+  </Grupo>
+</Grupos>

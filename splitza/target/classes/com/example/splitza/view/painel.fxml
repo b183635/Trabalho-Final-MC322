@@ -56,5 +56,11 @@
       <ListView fx:id="devemVoceListView" layoutX="430.0" layoutY="171.0" prefHeight="200.0" prefWidth="158.0" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="96.0" layoutY="433.0" radius="54.0" stroke="#ff821f" strokeType="INSIDE" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="362.0" layoutY="-23.0" radius="54.0" stroke="#ff821f" strokeType="INSIDE" />
+      <Label fx:id="olaLbl" layoutX="527.0" layoutY="41.0" text="Label" />
+      <ImageView fitHeight="112.0" fitWidth="200.0" layoutX="416.0" layoutY="6.0">
+         <image>
+            <Image url="@Design_sem_nome__5_-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

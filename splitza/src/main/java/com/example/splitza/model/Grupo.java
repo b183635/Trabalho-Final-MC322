@@ -7,9 +7,10 @@ public class Grupo {
     private List<String> membros;
     private List<Despesa> despesas;
 
-    public Grupo(String nome, List<String> membros) {
+    public Grupo(String nome, List<String> membros, List<Despesa> despesas) {
         this.nome = nome;
         this.membros = membros;
+        this.despesas = despesas;
     }
 
     public String getNome() {

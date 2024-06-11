@@ -1,7 +1,9 @@
 package com.example.splitza.controller;
 
+import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Grupo;
-import com.example.splitza.model.Usuario;
+import com.example.splitza.model.UsuarioAbstrato;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.event.ActionEvent;
@@ -11,11 +13,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CriarGrupoController {
@@ -28,10 +31,24 @@ public class CriarGrupoController {
     @FXML
     private ListView<String> membrosListView;
 
+    @FXML
+    public void initialize() {
+        LerUsuarios lerUsuarios = new LerUsuarios();
+        List<UsuarioAbstrato> usuarios = lerUsuarios.lerArquivo("usuarios.xml");
+        UsuarioLogado usuarioLogado = usuarios.stream()
+                .filter(u -> u instanceof UsuarioLogado && ((UsuarioLogado) u).isLogado())
+                .map(u -> (UsuarioLogado) u)
+                .findFirst()
+                .orElse(null);
+        if (Objects.nonNull(usuarioLogado)) {
+            membrosListView.getItems().add(usuarioLogado.getNome());
+        }
+
+    }
 
     @FXML
     protected void onCriarButtonClick(ActionEvent event) throws IOException {
-        Grupo grupo = new Grupo(nomeGrupoTxt.getText(), membrosListView.getItems());
+        Grupo grupo = new Grupo(nomeGrupoTxt.getText(), membrosListView.getItems(), new ArrayList<Despesa>());
         LerGrupos lerGrupos = new LerGrupos();
         lerGrupos.gravarArquivo("grupos.xml", grupo);
         redirectWindow(event, "/com/example/splitza/view/painel.fxml");
