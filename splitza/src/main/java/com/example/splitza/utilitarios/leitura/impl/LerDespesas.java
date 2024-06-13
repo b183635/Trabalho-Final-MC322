@@ -32,7 +32,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                 String data = despesaElement.getElementsByTagName("data").item(0).getTextContent();
                 double valor = Double.parseDouble(despesaElement.getElementsByTagName("valor").item(0).getTextContent());
 
-                String nomePagante = despesaElement.getElementsByTagName("nome").item(0).getTextContent();
+                String nomePagante = despesaElement.getElementsByTagName("nomePagante").item(0).getTextContent();
                 double saldoPagante = Double.parseDouble(despesaElement.getElementsByTagName("saldo").item(0).getTextContent());
                 Usuario pagante = new Usuario(nomePagante, saldoPagante);
 
@@ -40,7 +40,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                 List<Usuario> devedores = new ArrayList<>();
                 for (int j = 0; j < devedoresNodeList.getLength(); j++) {
                     Element devedorElement = (Element) devedoresNodeList.item(j);
-                    String nomeDevedor = devedorElement.getElementsByTagName("nome").item(0).getTextContent();
+                    String nomeDevedor = devedorElement.getElementsByTagName("nomeDevedor").item(0).getTextContent();
                     double saldoDevedor = Double.parseDouble(devedorElement.getElementsByTagName("saldo").item(0).getTextContent());
                     devedores.add(new Usuario(nomeDevedor, saldoDevedor));
                 }
@@ -93,7 +93,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
 
                 Element paganteElement = document.createElement("pagante");
 
-                Element nomePaganteElement = document.createElement("nome");
+                Element nomePaganteElement = document.createElement("nomePagante");
                 nomePaganteElement.appendChild(document.createTextNode(despesa.getPagante().getNome()));
                 paganteElement.appendChild(nomePaganteElement);
 
@@ -107,7 +107,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                 for (Usuario devedor : despesa.getDevedores()) {
                     Element devedorElement = document.createElement("devedor");
 
-                    Element nomeDevedorElement = document.createElement("nome");
+                    Element nomeDevedorElement = document.createElement("nomeDevedor");
                     nomeDevedorElement.appendChild(document.createTextNode(devedor.getNome()));
                     devedorElement.appendChild(nomeDevedorElement);
 

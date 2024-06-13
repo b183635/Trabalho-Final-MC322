@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Despesas>
+  <Despesa>
+    <nome>souvenir</nome>
+    <nomeGrupo>Passeio</nomeGrupo>
+    <data>jun. 12</data>
+    <valor>100.0</valor>
+    <pagante>
+      <nomePagante>fulano</nomePagante>
+      <saldo>50.0</saldo>
+    </pagante>
+    <devedores>
+      <devedor>
+        <nomeDevedor>abc</nomeDevedor>
+        <saldo>-50.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>fulano</nomeDevedor>
+        <saldo>-50.0</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+  <Despesa>
+    <nome>Sorvete</nome>
+    <nomeGrupo>Passeio</nomeGrupo>
+    <data>jun. 13</data>
+    <valor>10.0</valor>
+    <pagante>
+      <nomePagante>fulano</nomePagante>
+      <saldo>10.0</saldo>
+    </pagante>
+    <devedores>
+      <devedor>
+        <nomeDevedor>beltrano</nomeDevedor>
+        <saldo>-10.0</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+</Despesas>

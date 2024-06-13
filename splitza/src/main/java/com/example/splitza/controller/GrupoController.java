@@ -3,8 +3,11 @@ package com.example.splitza.controller;
 import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Grupo;
 import com.example.splitza.model.Historico;
+import com.example.splitza.model.UsuarioAbstrato;
+import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
+import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,14 +59,21 @@ public class GrupoController {
         List<Grupo> grupos = lerGrupos.lerArquivo("grupos.xml");
         LerDespesas lerDespesas = new LerDespesas();
         List<Despesa> despesas = lerDespesas.lerArquivo("despesas-grupo-" + this.grupoValue + ".xml");
+        LerUsuarios lerUsuarios = new LerUsuarios();
+        List<UsuarioAbstrato> usuarios = lerUsuarios.lerArquivo("usuarios.xml");
+        UsuarioLogado usuarioLogado = usuarios.stream()
+                .filter(u -> u instanceof UsuarioLogado && ((UsuarioLogado) u).isLogado())
+                .map(u -> (UsuarioLogado) u)
+                .findFirst()
+                .orElse(null);
         grupos.stream()
                 .filter(grupo -> grupo.getNome().equals(grupoValue))
                 .findFirst()
                 .ifPresent(grupo -> {
                     membrosListView.getItems().addAll(grupo.getMembros());
-                    if(Objects.nonNull(despesas)){
+                    if (Objects.nonNull(despesas)) {
                         grupo.getDespesas().addAll(despesas);
-                        atualizarTableHistorico(grupo);
+                        atualizarTableHistorico(grupo, usuarioLogado);
                     }
                 });
     }
@@ -75,7 +85,6 @@ public class GrupoController {
 
     @FXML
     protected void onVoltarButtonClick(ActionEvent event) throws IOException {
-        // gravar grupo
         redirectWindow(event, "/com/example/splitza/view/painel.fxml", 4);
     }
 
@@ -92,15 +101,15 @@ public class GrupoController {
     private void redirectWindow(ActionEvent event, String path, int botao) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
         loader.setControllerFactory(c -> {
-            switch (botao){
+            switch (botao) {
                 case 1:
                     AdicionarDespesaController controller = new AdicionarDespesaController();
                     controller.setGrupoValue(this.grupoValue);
                     return controller;
-//                case 2:
-//                    TotaisController controller = new TotaisController();
-//                    controller.setGrupoValue(this.grupoValue);
-//                    return controller;
+                case 2:
+                    TotaisController totaisController = new TotaisController();
+                    totaisController.setGrupoValue(this.grupoValue);
+                    return totaisController;
 //                case 3:
 //                    SaldosController controller = new SaldosController();
 //                    controller.setGrupoValue(this.grupoValue);
@@ -118,16 +127,22 @@ public class GrupoController {
         janela.show();
     }
 
-    private void atualizarTableHistorico(Grupo grupo){
+    private void atualizarTableHistorico(Grupo grupo, UsuarioLogado usuario) {
         ObservableList<Historico> data = historicoTableView.getItems();
 
         despesaTableColumn.setCellValueFactory(new PropertyValueFactory<>("despesa"));
         dataTableColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
         statusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-
         grupo.getDespesas().forEach(despesa -> {
-            // adicionar validacao do usuario logado
-            data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "teste"));
+            if (despesa.getPagante().getNome().equals(usuario.getNome())) {
+                data.add(new Historico(despesa.getData(), " Você pagou R$" + despesa.getValor(), "Você emprestou " + despesa.getPagante().getSaldo()));
+            } else if (despesa.getDevedores().stream().anyMatch(u -> u.getNome().equals(usuario.getNome()))) {
+                final double saldo = -(despesa.getDevedores().stream().filter(u -> u.getNome().equals(usuario.getNome())).findFirst().get().getSaldo());
+                data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "Você pegou emprestado R$ " + saldo));
+            }
+            else{
+                data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "não envolvido"));
+            }
         });
 
     }

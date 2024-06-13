@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.splitza.controller.TotaisController">
    <children>
       <Label layoutX="254.0" layoutY="89.0" text="Totais">
          <font>
@@ -27,20 +27,15 @@
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="65.0" layoutY="254.0" text="pagamentos feitos">
+      <Label fx:id="financasLbl" layoutX="65.0" layoutY="299.0">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="65.0" layoutY="299.0" text="pagamentos recebidos">
-         <font>
-            <Font name="Bell MT" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="381.0" layoutY="171.0" text="Label" />
-      <Label layoutX="381.0" layoutY="304.0" text="Label" />
-      <Label layoutX="381.0" layoutY="259.0" text="Label" />
-      <Label layoutX="381.0" layoutY="213.0" text="Label" />
+      <Label fx:id="totaisGrupoLbl" layoutX="381.0" layoutY="171.0" text="Label" />
+      <Label fx:id="saldoLbl" layoutX="381.0" layoutY="304.0" text="Label" />
+      <Label fx:id="dividasLbl" layoutX="381.0" layoutY="259.0" text="Label" />
+      <Label fx:id="totalUsuarioLogadoLbl" layoutX="381.0" layoutY="213.0" text="Label" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="527.0" layoutY="386.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <ImageView blendMode="SRC_ATOP" fitHeight="143.0" fitWidth="161.0" layoutX="426.0" layoutY="142.0">
          <image>
@@ -52,10 +47,15 @@
             <Image url="@SPLITZA__2_-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button layoutX="273.0" layoutY="334.0" mnemonicParsing="false" style="-fx-background-color: FFD5AA;" text="voltar">
+      <Button layoutX="273.0" layoutY="334.0" mnemonicParsing="false" onAction="#onVoltarButtonClick" style="-fx-background-color: FFD5AA;" text="voltar">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Label layoutX="67.0" layoutY="253.0" text="total devido por você">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

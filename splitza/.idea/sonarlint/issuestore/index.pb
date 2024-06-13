@@ -32,9 +32,6 @@ d
 4src/main/java/com/example/splitza/model/Despesa.java,d/a/dae9c25ebb6dc3db6a6294b604517696b3fdc861
 i
 9src/main/java/com/example/splitza/SplitzaApplication.java,5/3/536218455ab2bb1e21eaca2372ca0ba966f8efab
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 |
 Lsrc/main/java/com/example/splitza/controller/AdicionarDespesaController.java,1/6/1687f83056303f260de847136ef470c11c82e8b2
 j
@@ -45,5 +42,7 @@ l
 Ksrc/main/java/com/example/splitza/utilitarios/leitura/impl/LerDespesas.java,3/e/3ec22cd2070581ecf7e8bb44a953712b36d5f8ab
 f
 6src/main/java/com/example/splitza/model/Historico.java,1/7/17380c9ef4e19bdcc690dd07c51b00e6e54f5d2c
-H
-despesas-grupo-teste.xml,c/9/c90945007f6eb12442ca00b93d77ea6cea812719
+J
+despesas-grupo-Passeio.xml,0/6/06bf01e20e15c725e58679713261d23a5792b840
+r
+Bsrc/main/java/com/example/splitza/controller/TotaisController.java,b/8/b85c454513050bf6d219af82049ed156f60ef965

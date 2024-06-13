@@ -9,4 +9,12 @@
       <membro>ciclano</membro>
     </membros>
   </Grupo>
+  <Grupo>
+    <nome>Comprinha</nome>
+    <membros>
+      <membro>abc</membro>
+      <membro>alicia</membro>
+      <membro>lucca</membro>
+    </membros>
+  </Grupo>
 </Grupos>

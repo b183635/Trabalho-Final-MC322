@@ -1,9 +1,11 @@
 package com.example.splitza.controller;
 
+import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Grupo;
 import com.example.splitza.model.Usuario;
 import com.example.splitza.model.UsuarioAbstrato;
 import com.example.splitza.model.UsuarioLogado;
+import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
 import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.beans.value.ChangeListener;
@@ -16,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -28,6 +31,12 @@ public class PainelController {
 
     @FXML
     private ChoiceBox<String> myChoiceBox;
+
+    @FXML
+    private ListView<String> voceDeveListView;
+
+    @FXML
+    private ListView<String> devemVoceListView;
 
     @FXML
     private Label olaLbl;
@@ -49,6 +58,7 @@ public class PainelController {
 
         if (Objects.nonNull(grupos)) {
             grupos.forEach(grupo -> myChoiceBox.getItems().add(grupo.getNome()));
+            atualizarListViews(grupos, usuarioLogado);
         }
 
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -72,7 +82,7 @@ public class PainelController {
 
     private void redirectWindow(String path, Stage janela, String chosenValue) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
-        if (Objects.nonNull(chosenValue)){
+        if (Objects.nonNull(chosenValue)) {
             loader.setControllerFactory(c -> {
                 GrupoController controller = new GrupoController();
                 controller.setGrupoValue(chosenValue);
@@ -83,5 +93,49 @@ public class PainelController {
         Scene scene = new Scene(redirect);
         janela.setScene(scene);
         janela.show();
+    }
+
+    private void atualizarListViews(List<Grupo> grupos, UsuarioLogado usuarioLogado) {
+        LerDespesas lerDespesas = new LerDespesas();
+        for (Grupo grupo : grupos) {
+            List<Despesa> despesas = lerDespesas.lerArquivo("despesas-grupo-" + grupo.getNome() + ".xml");
+            if (Objects.nonNull(despesas)) {
+                List<Despesa> pagos = despesas.stream()
+                        .filter(despesa -> despesa.getPagante().getNome().equals(usuarioLogado.getNome()))
+                        .toList();
+                List<Despesa> debitos = despesas.stream()
+                        .filter(despesa -> despesa.getDevedores().stream().anyMatch(usuario -> usuario.getNome().equals(usuarioLogado.getNome())))
+                        .toList();
+                if (!pagos.isEmpty()) {
+                    pagos.forEach(despesa -> {
+                        despesa.getDevedores().forEach(usuario -> {
+                            if (!usuario.getNome().equals(usuarioLogado.getNome())) {
+                                usuario.setSaldo(-usuario.getSaldo());
+                                devemVoceListView.getItems().add(usuario.getNome() + "deve a você - R$" + despesa.getValor() + " em " + despesa.getNomeGrupo());
+                            }
+                        });
+                    });
+                } else {
+                    devemVoceListView.getItems().clear();
+                    devemVoceListView.getItems().add("Não devem nada a você");
+                }
+
+                if (!debitos.isEmpty()) {
+                    debitos.forEach(despesa -> {
+                        despesa.getDevedores().forEach(usuario -> {
+                            if (usuario.getNome().equals(usuarioLogado.getNome())) {
+                                usuario.setSaldo(-usuario.getSaldo());
+                                voceDeveListView.getItems().add("Você deve a " + despesa.getPagante().getNome() + " - R$" + usuario.getSaldo() + " em " + despesa.getNomeGrupo());
+                            }
+
+                        });
+                    });
+                } else {
+                    voceDeveListView.getItems().clear();
+                    voceDeveListView.getItems().add("Você não deve nada");
+                }
+            }
+
+        }
     }
 }

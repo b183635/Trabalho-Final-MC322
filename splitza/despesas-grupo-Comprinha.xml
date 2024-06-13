@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Despesas>
+  <Despesa>
+    <nome>bolsinha</nome>
+    <nomeGrupo>Comprinha</nomeGrupo>
+    <data>jun. 13</data>
+    <valor>500.0</valor>
+    <pagante>
+      <nomePagante>lucca</nomePagante>
+      <saldo>250.0</saldo>
+    </pagante>
+    <devedores>
+      <devedor>
+        <nomeDevedor>abc</nomeDevedor>
+        <saldo>-250.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>lucca</nomeDevedor>
+        <saldo>-250.0</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+</Despesas>

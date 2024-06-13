@@ -4,9 +4,9 @@ java:S1192-"FDefine a constant instead of duplicating this literal "senha" 3 ti
 c
 java:S1192,"FDefine a constant instead of duplicating this literal "email" 3 times.(×÷Õõ8™œñº€2
 P
-java:S2755"3Disable access to external entities in XML parsing.(²µŸš8€Ÿñº€2
-P
 java:S2755j"3Disable access to external entities in XML parsing.(Ý‰Ë–8€Ÿñº€2
+P
+java:S2755"3Disable access to external entities in XML parsing.(²µŸš8€Ÿñº€2
 v
 java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øþÿÿÿÿ8”Ÿñº€2
 v

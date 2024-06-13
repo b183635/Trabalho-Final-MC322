@@ -1,4 +1,4 @@
 
-X	java:S125e"<This block of commented-out lines of code should be removed.(âø¾œ8Àîğ¦€2
-O
-java:S1602€",Remove useless curly braces around statement(¢÷¨­úÿÿÿÿ8Ëîğ¦€2
+q
+java:S6201A"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(’“Ù‰8ª³ÀŒ2
+]	java:S125r"<This block of commented-out lines of code should be removed.(İ»ËŸøÿÿÿÿ8Ä³ÀŒ2
