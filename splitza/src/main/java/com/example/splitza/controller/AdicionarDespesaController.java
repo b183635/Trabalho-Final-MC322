@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -19,12 +20,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
-public class AdicionarDespesaController {
+public class AdicionarDespesaController extends ControllerAbstrato{
 
     @FXML
     private TextField nomeTxt;
@@ -37,6 +37,9 @@ public class AdicionarDespesaController {
 
     @FXML
     private ChoiceBox<String> membrosChoiceBox;
+
+    @FXML
+    private Label preencherLbl;
 
     private String grupoValue;
 
@@ -66,20 +69,36 @@ public class AdicionarDespesaController {
 
     @FXML
     protected void onAdicionarButtonClick(ActionEvent event) throws IOException {
-        LerDespesas lerDespesas = new LerDespesas();
-        String nome = nomeTxt.getText();
-        double valor = Double.parseDouble(valorTxt.getText().replace(",", "."));
-        Usuario pagante = new Usuario(membrosChoiceBox.getValue(), 0);
-        List<Usuario> devedores = membrosListView.getSelectionModel().getSelectedItems().stream().map(s -> new Usuario(s, 0)).toList();
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
-        Despesa despesa = new Despesa(nome, this.grupoValue, formatter.format(date), valor, pagante, devedores);
-        calcularSaldos(despesa);
-        lerDespesas.gravarArquivo("despesas-grupo-" + this.grupoValue + ".xml", despesa);
-        redirectWindow(event, "/com/example/splitza/view/grupo.fxml");
+
+        if(Objects.isNull(nomeTxt.getText()) || nomeTxt.getText().isEmpty() || Objects.isNull(membrosChoiceBox.getValue()) || Objects.isNull(valorTxt.getText()) || valorTxt.getText().isEmpty()){
+            preencherLbl.setVisible(true);
+        }
+        else {
+            LerDespesas lerDespesas = new LerDespesas();
+            Usuario pagante = new Usuario(membrosChoiceBox.getValue(), 0);
+            double valor = Double.parseDouble(valorTxt.getText().replace(",", "."));
+            if(valor < 0){
+                throw new NumberFormatException("O valor da despesa não deve ser negativo!");
+            }
+            List<Usuario> devedores = membrosListView.getSelectionModel().getSelectedItems().stream().map(s -> new Usuario(s, 0)).toList();
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
+            Despesa despesa = new Despesa.DespesaBuilder()
+                    .setNome(nomeTxt.getText())
+                    .setNomeGrupo(grupoValue)
+                    .setData(formatter.format(date))
+                    .setValor(valor)
+                    .setPagante(pagante)
+                    .setDevedores(devedores)
+                    .build();
+            calcularSaldos(despesa);
+            lerDespesas.gravarArquivo("despesas-grupo-" + this.grupoValue + ".xml", despesa);
+            redirectWindow(event, "/com/example/splitza/view/grupo.fxml");
+        }
+
     }
 
-    private void redirectWindow(ActionEvent event, String path) throws IOException {
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
         loader.setControllerFactory(c -> {
             GrupoController controller = new GrupoController();

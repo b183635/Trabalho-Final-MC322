@@ -7,10 +7,14 @@ public class Grupo {
     private List<String> membros;
     private List<Despesa> despesas;
 
-    public Grupo(String nome, List<String> membros, List<Despesa> despesas) {
-        this.nome = nome;
-        this.membros = membros;
-        this.despesas = despesas;
+    public Grupo(GrupoBuilder builder) {
+        this.nome = builder.getNome();
+        this.membros = builder.getMembros();
+        this.despesas = builder.getDespesas();
+    }
+
+    public static GrupoBuilder getBuilder() {
+        return new GrupoBuilder();
     }
 
     public String getNome() {
@@ -35,5 +39,41 @@ public class Grupo {
 
     public void setDespesas(List<Despesa> despesas) {
         this.despesas = despesas;
+    }
+
+    public static class GrupoBuilder {
+        private String nome;
+        private List<String> membros;
+        private List<Despesa> despesas;
+
+        public GrupoBuilder setNome(String nome) {
+            this.nome = nome;
+            return this;
+        }
+
+        public GrupoBuilder setMembros(List<String> membros) {
+            this.membros = membros;
+            return this;
+        }
+
+        public GrupoBuilder setDespesas(List<Despesa> despesas) {
+            this.despesas = despesas;
+            return this;
+        }
+        public String getNome() {
+            return nome;
+        }
+
+        public List<String> getMembros() {
+            return membros;
+        }
+
+        public List<Despesa> getDespesas() {
+            return despesas;
+        }
+
+        public Grupo build() {
+            return new Grupo(this);
+        }
     }
 }

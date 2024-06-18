@@ -1,7 +1,5 @@
 package com.example.splitza.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class Despesa {
@@ -13,13 +11,17 @@ public class Despesa {
     private Usuario pagante;
     private List<Usuario> devedores;
 
-    public Despesa(String nome, String nomeGrupo, String data, double valor, Usuario pagante, List<Usuario> devedores) {
-        this.nome = nome;
-        this.nomeGrupo = nomeGrupo;
-        this.valor = valor;
-        this.pagante = pagante;
-        this.devedores = devedores;
-        this.data = data;
+    private Despesa(DespesaBuilder builder) {
+        this.nome = builder.getNome();
+        this.nomeGrupo = builder.getNomeGrupo();
+        this.data = builder.getData();
+        this.valor = builder.getValor();
+        this.pagante = builder.getPagante();
+        this.devedores = builder.getDevedores();
+    }
+
+    public static DespesaBuilder getBuilder() {
+        return new DespesaBuilder();
     }
 
     public String getNome() {
@@ -28,6 +30,22 @@ public class Despesa {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getNomeGrupo() {
+        return nomeGrupo;
+    }
+
+    public void setNomeGrupo(String nomeGrupo) {
+        this.nomeGrupo = nomeGrupo;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public double getValor() {
@@ -54,20 +72,69 @@ public class Despesa {
         this.devedores = devedores;
     }
 
-    public String getNomeGrupo() {
-        return nomeGrupo;
-    }
+    public static class DespesaBuilder {
+        private String nome;
+        private String nomeGrupo;
+        private String data;
+        private double valor;
+        private Usuario pagante;
+        private List<Usuario> devedores;
 
-    public void setNomeGrupo(String nomeGrupo) {
-        this.nomeGrupo = nomeGrupo;
-    }
+        public DespesaBuilder setNome(String nome) {
+            this.nome = nome;
+            return this;
+        }
 
-    public String getData() {
-        return data;
-    }
+        public DespesaBuilder setNomeGrupo(String nomeGrupo) {
+            this.nomeGrupo = nomeGrupo;
+            return this;
+        }
 
-    public void setData(String data) {
-        this.data = data;
+        public DespesaBuilder setData(String data) {
+            this.data = data;
+            return this;
+        }
+
+        public DespesaBuilder setValor(double valor) {
+            this.valor = valor;
+            return this;
+        }
+
+        public DespesaBuilder setPagante(Usuario pagante) {
+            this.pagante = pagante;
+            return this;
+        }
+
+        public DespesaBuilder setDevedores(List<Usuario> devedores) {
+            this.devedores = devedores;
+            return this;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public double getValor() {
+            return valor;
+        }
+
+        public Usuario getPagante() {
+            return pagante;
+        }
+        public List<Usuario> getDevedores() {
+            return devedores;
+        }
+
+        public String getNomeGrupo() {
+            return nomeGrupo;
+        }
+        public String getData() {
+            return data;
+        }
+
+        public Despesa build() {
+            return new Despesa(this);
+        }
     }
 
 }

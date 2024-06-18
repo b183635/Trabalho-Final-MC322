@@ -43,7 +43,11 @@ public class LerGrupos implements I_Arquivo<Grupo> {
                     membrosGrupo.add(item.getTextContent());
                 }
 
-                Grupo grupo = new Grupo(nome, membrosGrupo, new ArrayList<>());
+                Grupo grupo = new Grupo.GrupoBuilder()
+                        .setNome(nome)
+                        .setMembros(membrosGrupo)
+                        .setDespesas(new ArrayList<>())
+                        .build();
 
                 grupos.add(grupo);
             }

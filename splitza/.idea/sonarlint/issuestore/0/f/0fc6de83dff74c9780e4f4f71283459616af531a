@@ -1,18 +1,14 @@
 
-g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ØÛı€2
+g	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ËğÉ–‚2
 E
-java:S1604@"(Make this anonymous inner class a lambda(»â Ô8“ØÛı€2
+java:S1604="(Make this anonymous inner class a lambda(»â Ô8ÎğÉ–‚2
 q
-java:S62013"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(’“Ù‰8‡ÚÛı€2
+java:S62010"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(’“Ù‰8×òÉ–‚2
+8
+java:S3626L"Remove this redundant jump.(ûÁİ…8àòÉ–‚2
 t
-java:S3776b"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(äšÏäùÿÿÿÿ8»ÚÛı€2
+java:S3776d"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(äšÏäùÿÿÿÿ8öòÉ–‚2
 N
-java:S1602n",Remove useless curly braces around statement(è‹Ëüÿÿÿÿ8âÚÛı€2
+java:S1602p",Remove useless curly braces around statement(è‹Ëüÿÿÿÿ8üòÉ–‚2
 I
-java:S1602|",Remove useless curly braces around statement(š£ğ8õÚÛı€2
-`
-java:S1128">Remove this unused import 'com.example.splitza.model.Usuario'.(Ğœ¤¶ùÿÿÿÿ8şÚÛı€2
-\
-java:S1128"?Remove this unused import 'javafx.scene.control.PasswordField'.(êú´Ë8€ÛÛı€2
-X
-java:S1128";Remove this unused import 'javafx.scene.control.TextField'.(¨¢¤¶8ÛÛı€2
+java:S1602z",Remove useless curly braces around statement(š£ğ8óÉ–‚2

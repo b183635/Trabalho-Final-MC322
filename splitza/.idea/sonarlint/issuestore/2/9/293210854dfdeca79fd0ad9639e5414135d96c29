@@ -1,15 +1,15 @@
 
 c
-java:S1192-"FDefine a constant instead of duplicating this literal "senha" 3 times.(Œªû»8˜œñº€2
+java:S1192-"FDefine a constant instead of duplicating this literal "senha" 3 times.(Œªû»8˜õ‚½‚2
 c
-java:S1192,"FDefine a constant instead of duplicating this literal "email" 3 times.(×÷Õõ8™œñº€2
+java:S1192,"FDefine a constant instead of duplicating this literal "email" 3 times.(×÷Õõ8™õ‚½‚2
 P
-java:S2755j"3Disable access to external entities in XML parsing.(İ‰Ë–8€Ÿñº€2
+java:S2755"3Disable access to external entities in XML parsing.(²µŸš8¯ö‚½‚2
 P
-java:S2755"3Disable access to external entities in XML parsing.(²µŸš8€Ÿñº€2
+java:S2755j"3Disable access to external entities in XML parsing.(İ‰Ë–8œÅƒ½‚2
 v
-java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8”Ÿñº€2
+java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8îš½‚2
 v
-java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8”Ÿñº€2
+java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8îš½‚2
 v
-java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8•Ÿñº€2
+java:S6201\"TReplace this instanceof check and cast with 'instanceof UsuarioLogado usuariologado'(í×˜øşÿÿÿÿ8îš½‚2

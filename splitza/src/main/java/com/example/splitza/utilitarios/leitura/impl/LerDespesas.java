@@ -44,8 +44,14 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                     double saldoDevedor = Double.parseDouble(devedorElement.getElementsByTagName("saldo").item(0).getTextContent());
                     devedores.add(new Usuario(nomeDevedor, saldoDevedor));
                 }
-
-                Despesa despesa = new Despesa(nome, nomeGrupo, data, valor, pagante, devedores);
+                Despesa despesa = new Despesa.DespesaBuilder()
+                        .setNome(nome)
+                        .setNomeGrupo(nomeGrupo)
+                        .setData(data)
+                        .setValor(valor)
+                        .setPagante(pagante)
+                        .setDevedores(devedores)
+                        .build();
                 despesas.add(despesa);
             }
         } catch (Exception e) {

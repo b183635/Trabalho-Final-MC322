@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -30,7 +29,7 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="162.0" layoutY="97.0" text="Adicionar despesa">
+      <Label layoutX="150.0" layoutY="97.0" text="Adicionar despesa">
          <font>
             <Font name="Bodoni MT" size="35.0" />
          </font>
@@ -56,13 +55,13 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="421.0" layoutY="167.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" styleClass="colo" fx:id="membrosChoiceBox"/>
+      <ChoiceBox fx:id="membrosChoiceBox" layoutX="421.0" layoutY="167.0" prefWidth="150.0" style="-fx-background-color: FFD5AA;" styleClass="colo" />
       <Label layoutX="327.0" layoutY="217.0" text="dividido por">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <ListView layoutX="425.0" layoutY="211.0" prefHeight="160.0" prefWidth="143.0" fx:id="membrosListView"/>
+      <ListView fx:id="membrosListView" layoutX="425.0" layoutY="211.0" prefHeight="160.0" prefWidth="143.0" />
       <ImageView fitHeight="259.0" fitWidth="240.0" layoutX="-33.0" layoutY="-30.0">
          <image>
             <Image url="@SPLITZA__2_-removebg-preview.png" />
@@ -78,5 +77,10 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Label fx:id="preencherLbl" layoutX="207.0" layoutY="141.0" text="Preencha todos os campos!" visible="false">
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

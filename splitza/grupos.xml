@@ -17,4 +17,29 @@
       <membro>lucca</membro>
     </membros>
   </Grupo>
+  <Grupo>
+    <nome>teste</nome>
+    <membros>
+      <membro>abc</membro>
+      <membro>fulano</membro>
+      <membro>beltrano</membro>
+    </membros>
+  </Grupo>
+  <Grupo>
+    <nome>mc322</nome>
+    <membros>
+      <membro>abc</membro>
+      <membro>ciclano</membro>
+      <membro>beltrano</membro>
+    </membros>
+  </Grupo>
+  <Grupo>
+    <nome>Shopping</nome>
+    <membros>
+      <membro>abc</membro>
+      <membro>alicia</membro>
+      <membro>pai</membro>
+      <membro>mae</membro>
+    </membros>
+  </Grupo>
 </Grupos>
