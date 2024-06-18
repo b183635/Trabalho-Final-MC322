@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class GrupoController {
+public class GrupoController extends ControllerAbstrato{
     @FXML
     private Label nomeGrupoLabel;
 
@@ -78,6 +78,11 @@ public class GrupoController {
                 });
     }
 
+    @Override
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
+        return;
+    }
+
     @FXML
     protected void onAdicionarButtonClick(ActionEvent event) throws IOException {
         redirectWindow(event, "/com/example/splitza/view/adicionar_despesa.fxml", 1);
@@ -110,10 +115,10 @@ public class GrupoController {
                     TotaisController totaisController = new TotaisController();
                     totaisController.setGrupoValue(this.grupoValue);
                     return totaisController;
-//                case 3:
-//                    SaldosController controller = new SaldosController();
-//                    controller.setGrupoValue(this.grupoValue);
-//                    return controller;
+                case 3:
+                    SaldosController saldosController = new SaldosController();
+                    saldosController.setGrupoValue(this.grupoValue);
+                    return saldosController;
                 case 4:
                     return new PainelController();
                 default:

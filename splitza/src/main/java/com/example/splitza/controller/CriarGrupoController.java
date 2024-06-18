@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CriarGrupoController {
+public class CriarGrupoController extends ControllerAbstrato{
     @FXML
     private TextField nomeGrupoTxt;
 
@@ -48,20 +48,28 @@ public class CriarGrupoController {
 
     @FXML
     protected void onCriarButtonClick(ActionEvent event) throws IOException {
-        Grupo grupo = new Grupo(nomeGrupoTxt.getText(), membrosListView.getItems(), new ArrayList<Despesa>());
+        Grupo grupo = Grupo.getBuilder()
+                .setNome(nomeGrupoTxt.getText())
+                .setMembros(membrosListView.getItems())
+                .setDespesas(new ArrayList<>())
+                .build();
         LerGrupos lerGrupos = new LerGrupos();
+        List<Grupo> grupos = lerGrupos.lerArquivo("grupos.xml");
+        if(Objects.nonNull(grupos) && (grupos.stream().anyMatch(g -> g.getNome().equals(grupo.getNome())))){
+                throw new IllegalArgumentException("Grupo já existe");
+        }
         lerGrupos.gravarArquivo("grupos.xml", grupo);
         redirectWindow(event, "/com/example/splitza/view/painel.fxml");
     }
 
     @FXML
-    protected void onAdicionarButtonClick(ActionEvent event) throws IOException {
+    protected void onAdicionarButtonClick(ActionEvent event) {
         String nome = nomeMembroTxt.getText();
         membrosListView.getItems().add(nome);
         nomeMembroTxt.clear();
     }
 
-    private void redirectWindow(ActionEvent event, String path) throws IOException {
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
         Parent redirect = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         Scene scene = new Scene(redirect);
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -5,7 +5,6 @@ import com.example.splitza.model.Usuario;
 import com.example.splitza.model.UsuarioAbstrato;
 import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
-import com.example.splitza.utilitarios.leitura.impl.LerGrupos;
 import com.example.splitza.utilitarios.leitura.impl.LerUsuarios;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,20 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class TotaisController {
+public class TotaisController extends ControllerAbstrato {
 
     @FXML
     private Label totaisGrupoLbl;
@@ -99,7 +92,7 @@ public class TotaisController {
         redirectWindow(event, "/com/example/splitza/view/grupo.fxml");
     }
 
-    private void redirectWindow(ActionEvent event, String path) throws IOException {
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
         loader.setControllerFactory(c -> {
             GrupoController controller = new GrupoController();

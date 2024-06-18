@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class EntrarController {
+public class EntrarController extends ControllerAbstrato{
     @FXML
     private TextField emailText;
 
@@ -61,7 +61,12 @@ public class EntrarController {
         redirectWindow(event, "/com/example/splitza/view/cadastro.fxml");
     }
 
-    private void redirectWindow(ActionEvent event, String path) throws IOException {
+    @Override
+    public void initialize() {
+        return;
+    }
+
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
         Parent redirect = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         Scene scene = new Scene(redirect);
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -2,7 +2,6 @@ package com.example.splitza.controller;
 
 import com.example.splitza.model.Despesa;
 import com.example.splitza.model.Grupo;
-import com.example.splitza.model.Usuario;
 import com.example.splitza.model.UsuarioAbstrato;
 import com.example.splitza.model.UsuarioLogado;
 import com.example.splitza.utilitarios.leitura.impl.LerDespesas;
@@ -19,15 +18,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-public class PainelController {
+public class PainelController extends ControllerAbstrato{
 
     @FXML
     private ChoiceBox<String> myChoiceBox;
@@ -74,6 +71,11 @@ public class PainelController {
         });
     }
 
+    @Override
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
+        return;
+    }
+
     @FXML
     protected void onCriarGrupoButtonClick(ActionEvent event) throws IOException {
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,31 +113,31 @@ public class PainelController {
                         despesa.getDevedores().forEach(usuario -> {
                             if (!usuario.getNome().equals(usuarioLogado.getNome())) {
                                 usuario.setSaldo(-usuario.getSaldo());
-                                devemVoceListView.getItems().add(usuario.getNome() + "deve a você - R$" + despesa.getValor() + " em " + despesa.getNomeGrupo());
+                                devemVoceListView.getItems().add(usuario.getNome() + " deve a você - R$" + String.format("%.2f", despesa.getValor()) + " em " + despesa.getNomeGrupo());
                             }
                         });
                     });
-                } else {
-                    devemVoceListView.getItems().clear();
-                    devemVoceListView.getItems().add("Não devem nada a você");
                 }
-
                 if (!debitos.isEmpty()) {
                     debitos.forEach(despesa -> {
                         despesa.getDevedores().forEach(usuario -> {
                             if (usuario.getNome().equals(usuarioLogado.getNome())) {
                                 usuario.setSaldo(-usuario.getSaldo());
-                                voceDeveListView.getItems().add("Você deve a " + despesa.getPagante().getNome() + " - R$" + usuario.getSaldo() + " em " + despesa.getNomeGrupo());
+                                voceDeveListView.getItems().add("Você deve a " + despesa.getPagante().getNome() + " - R$" + String.format("%.2f", usuario.getSaldo()) + " em " + despesa.getNomeGrupo());
                             }
 
                         });
                     });
-                } else {
-                    voceDeveListView.getItems().clear();
-                    voceDeveListView.getItems().add("Você não deve nada");
                 }
             }
-
+        }
+        if(devemVoceListView.getItems().isEmpty()){
+            devemVoceListView.getItems().clear();
+            devemVoceListView.getItems().add("Não devem nada a você");
+        }
+        if(voceDeveListView.getItems().isEmpty()){
+            voceDeveListView.getItems().clear();
+            voceDeveListView.getItems().add("Você não deve nada");
         }
     }
 }
