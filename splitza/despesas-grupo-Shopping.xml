@@ -15,6 +15,7 @@
         <saldo>-200.0</saldo>
       </devedor>
     </devedores>
+    <quitada>false</quitada>
   </Despesa>
   <Despesa>
     <nome>Presente</nome>
@@ -35,6 +36,7 @@
         <saldo>-75.0</saldo>
       </devedor>
     </devedores>
+    <quitada>false</quitada>
   </Despesa>
   <Despesa>
     <nome>Estacionamento</nome>
@@ -55,5 +57,6 @@
         <saldo>-7.5</saldo>
       </devedor>
     </devedores>
+    <quitada>false</quitada>
   </Despesa>
 </Despesas>

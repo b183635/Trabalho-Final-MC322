@@ -39,7 +39,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="280.0" layoutY="342.0" mnemonicParsing="false" onAction="#onSimplificarButtonClick" style="-fx-background-color: FFD5AA;" text="simplificar dívidas">
+      <Button layoutX="280.0" layoutY="342.0" mnemonicParsing="false" onAction="#onQuitarButtonClick" style="-fx-background-color: FFD5AA;" text="quitar dívidas">
          <font>
             <Font size="14.0" />
          </font>

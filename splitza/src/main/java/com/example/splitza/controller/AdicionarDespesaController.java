@@ -90,6 +90,7 @@ public class AdicionarDespesaController extends ControllerAbstrato{
                     .setValor(valor)
                     .setPagante(pagante)
                     .setDevedores(devedores)
+                    .setQuitada(false)
                     .build();
             calcularSaldos(despesa);
             lerDespesas.gravarArquivo("despesas-grupo-" + this.grupoValue + ".xml", despesa);

@@ -32,10 +32,10 @@
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="totaisGrupoLbl" layoutX="381.0" layoutY="171.0" text="Label" />
-      <Label fx:id="saldoLbl" layoutX="381.0" layoutY="304.0" text="Label" />
-      <Label fx:id="dividasLbl" layoutX="381.0" layoutY="259.0" text="Label" />
-      <Label fx:id="totalUsuarioLogadoLbl" layoutX="381.0" layoutY="213.0" text="Label" />
+      <Label fx:id="totaisGrupoLbl" layoutX="381.0" layoutY="171.0" text="0" />
+      <Label fx:id="saldoLbl" layoutX="381.0" layoutY="304.0" text="0" />
+      <Label fx:id="dividasLbl" layoutX="381.0" layoutY="259.0" text="0" />
+      <Label fx:id="totalUsuarioLogadoLbl" layoutX="381.0" layoutY="213.0" text="0" />
       <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="527.0" layoutY="386.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
       <ImageView blendMode="SRC_ATOP" fitHeight="143.0" fitWidth="161.0" layoutX="426.0" layoutY="142.0">
          <image>

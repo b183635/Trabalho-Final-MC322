@@ -35,6 +35,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                 String nomePagante = despesaElement.getElementsByTagName("nomePagante").item(0).getTextContent();
                 double saldoPagante = Double.parseDouble(despesaElement.getElementsByTagName("saldo").item(0).getTextContent());
                 Usuario pagante = new Usuario(nomePagante, saldoPagante);
+                boolean quitada = Boolean.parseBoolean(despesaElement.getElementsByTagName("quitada").item(0).getTextContent());
 
                 NodeList devedoresNodeList = despesaElement.getElementsByTagName("devedor");
                 List<Usuario> devedores = new ArrayList<>();
@@ -51,6 +52,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                         .setValor(valor)
                         .setPagante(pagante)
                         .setDevedores(devedores)
+                        .setQuitada(quitada)
                         .build();
                 despesas.add(despesa);
             }
@@ -109,6 +111,10 @@ public class LerDespesas implements I_Arquivo<Despesa> {
 
                 despesaElement.appendChild(paganteElement);
 
+                Element quitadaElement = document.createElement("quitada");
+                quitadaElement.appendChild(document.createTextNode(String.valueOf(despesa.isQuitada())));
+                despesaElement.appendChild(quitadaElement);
+
                 Element devedoresElement = document.createElement("devedores");
                 for (Usuario devedor : despesa.getDevedores()) {
                     Element devedorElement = document.createElement("devedor");
@@ -138,5 +144,10 @@ public class LerDespesas implements I_Arquivo<Despesa> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean deletarArquivo(String path) {
+        File arquivo = new File(path);
+        return arquivo.delete();
     }
 }

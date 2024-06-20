@@ -50,8 +50,8 @@ public class SaldosController extends ControllerAbstrato {
     }
 
     @FXML
-    protected void onSimplificarButtonClick(ActionEvent event) throws IOException {
-
+    protected void onQuitarButtonClick(ActionEvent event) throws IOException {
+        redirectWindow(event, "/com/example/splitza/view/quitar.fxml");
     }
 
 
@@ -63,9 +63,18 @@ public class SaldosController extends ControllerAbstrato {
     protected void redirectWindow(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
         loader.setControllerFactory(c -> {
-            GrupoController controller = new GrupoController();
-            controller.setGrupoValue(this.grupoValue);
-            return controller;
+            switch (path){
+                case "/com/example/splitza/view/grupo.fxml":
+                    GrupoController controller = new GrupoController();
+                    controller.setGrupoValue(this.grupoValue);
+                    return controller;
+                case "/com/example/splitza/view/quitar.fxml":
+                    QuitarController quitarController = new QuitarController();
+                    quitarController.setGrupoValue(this.grupoValue);
+                    return quitarController;
+                default:
+                    return null;
+            }
         });
         Parent redirect = loader.load();
         Scene scene = new Scene(redirect);
@@ -77,14 +86,17 @@ public class SaldosController extends ControllerAbstrato {
     private void calcularSaldos(List<String> membros, List<Despesa> despesas) {
         for(String membro : membros){
             double totalPago = despesas.stream()
+                    .filter(despesa -> !despesa.isQuitada())
                     .filter(despesa -> despesa.getPagante().getNome().equals(membro))
                     .mapToDouble(despesa -> despesa.getPagante().getSaldo())
                     .sum();
             double totalDivida = 0;
             for(Despesa d : despesas){
-                for(Usuario u : d.getDevedores()){
-                    if(u.getNome().equals(membro) && !u.getNome().equals(d.getPagante().getNome())){
-                        totalDivida -= u.getSaldo();
+                if(!d.isQuitada()){
+                    for(Usuario u : d.getDevedores()){
+                        if(u.getNome().equals(membro) && !u.getNome().equals(d.getPagante().getNome())){
+                            totalDivida -= u.getSaldo();
+                        }
                     }
                 }
             }

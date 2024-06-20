@@ -19,5 +19,6 @@
         <saldo>-250.0</saldo>
       </devedor>
     </devedores>
+    <quitada>false</quitada>
   </Despesa>
 </Despesas>

@@ -23,5 +23,6 @@
         <saldo>-16.666666666666668</saldo>
       </devedor>
     </devedores>
+    <quitada>false</quitada>
   </Despesa>
 </Despesas>

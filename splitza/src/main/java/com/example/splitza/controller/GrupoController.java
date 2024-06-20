@@ -78,48 +78,43 @@ public class GrupoController extends ControllerAbstrato{
                 });
     }
 
-    @Override
-    protected void redirectWindow(ActionEvent event, String path) throws IOException {
-        return;
-    }
-
     @FXML
     protected void onAdicionarButtonClick(ActionEvent event) throws IOException {
-        redirectWindow(event, "/com/example/splitza/view/adicionar_despesa.fxml", 1);
+        redirectWindow(event, "/com/example/splitza/view/adicionar_despesa.fxml");
     }
 
     @FXML
     protected void onVoltarButtonClick(ActionEvent event) throws IOException {
-        redirectWindow(event, "/com/example/splitza/view/painel.fxml", 4);
+        redirectWindow(event, "/com/example/splitza/view/painel.fxml");
     }
 
     @FXML
     protected void onTotaisButtonClick(ActionEvent event) throws IOException {
-        redirectWindow(event, "/com/example/splitza/view/totais.fxml", 2);
+        redirectWindow(event, "/com/example/splitza/view/totais.fxml");
     }
 
     @FXML
     protected void onSaldosButtonClick(ActionEvent event) throws IOException {
-        redirectWindow(event, "/com/example/splitza/view/saldos.fxml", 3); // fazer tela ainda
+        redirectWindow(event, "/com/example/splitza/view/saldos.fxml"); // fazer tela ainda
     }
 
-    private void redirectWindow(ActionEvent event, String path, int botao) throws IOException {
+    protected void redirectWindow(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path)));
         loader.setControllerFactory(c -> {
-            switch (botao) {
-                case 1:
+            switch (path){
+                case "/com/example/splitza/view/adicionar_despesa.fxml":
                     AdicionarDespesaController controller = new AdicionarDespesaController();
                     controller.setGrupoValue(this.grupoValue);
                     return controller;
-                case 2:
+                case "/com/example/splitza/view/totais.fxml":
                     TotaisController totaisController = new TotaisController();
                     totaisController.setGrupoValue(this.grupoValue);
                     return totaisController;
-                case 3:
+                case "/com/example/splitza/view/saldos.fxml":
                     SaldosController saldosController = new SaldosController();
                     saldosController.setGrupoValue(this.grupoValue);
                     return saldosController;
-                case 4:
+                case "/com/example/splitza/view/painel.fxml":
                     return new PainelController();
                 default:
                     return null;
@@ -143,10 +138,18 @@ public class GrupoController extends ControllerAbstrato{
                 data.add(new Historico(despesa.getData(), " Você pagou R$" + despesa.getValor(), "Você emprestou " + despesa.getPagante().getSaldo()));
             } else if (despesa.getDevedores().stream().anyMatch(u -> u.getNome().equals(usuario.getNome()))) {
                 final double saldo = -(despesa.getDevedores().stream().filter(u -> u.getNome().equals(usuario.getNome())).findFirst().get().getSaldo());
-                data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "Você pegou emprestado R$ " + saldo));
+                if(despesa.isQuitada()){
+                    data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "quitada"));
+                }
+                else
+                    data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "Você pegou emprestado R$ " + saldo));
             }
             else{
-                data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "não envolvido"));
+                if (despesa.isQuitada()){
+                    data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "quitada"));
+                }
+                else
+                    data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "não envolvido"));
             }
         });
 

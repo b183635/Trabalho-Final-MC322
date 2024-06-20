@@ -10,6 +10,7 @@ public class Despesa {
     private double valor;
     private Usuario pagante;
     private List<Usuario> devedores;
+    private boolean quitada;
 
     private Despesa(DespesaBuilder builder) {
         this.nome = builder.getNome();
@@ -18,6 +19,7 @@ public class Despesa {
         this.valor = builder.getValor();
         this.pagante = builder.getPagante();
         this.devedores = builder.getDevedores();
+        this.quitada = builder.isQuitada();
     }
 
     public static DespesaBuilder getBuilder() {
@@ -72,6 +74,14 @@ public class Despesa {
         this.devedores = devedores;
     }
 
+    public boolean isQuitada() {
+        return quitada;
+    }
+
+    public void setQuitada(boolean quitada) {
+        this.quitada = quitada;
+    }
+
     public static class DespesaBuilder {
         private String nome;
         private String nomeGrupo;
@@ -79,6 +89,7 @@ public class Despesa {
         private double valor;
         private Usuario pagante;
         private List<Usuario> devedores;
+        private boolean quitada;
 
         public DespesaBuilder setNome(String nome) {
             this.nome = nome;
@@ -110,6 +121,11 @@ public class Despesa {
             return this;
         }
 
+        public DespesaBuilder setQuitada(boolean quitada) {
+            this.quitada = quitada;
+            return this;
+        }
+
         public String getNome() {
             return nome;
         }
@@ -130,6 +146,10 @@ public class Despesa {
         }
         public String getData() {
             return data;
+        }
+
+        public boolean isQuitada() {
+            return quitada;
         }
 
         public Despesa build() {

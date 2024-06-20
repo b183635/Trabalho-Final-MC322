@@ -9,6 +9,7 @@
       <nomePagante>fulano</nomePagante>
       <saldo>50.0</saldo>
     </pagante>
+    <quitada>true</quitada>
     <devedores>
       <devedor>
         <nomeDevedor>abc</nomeDevedor>
@@ -29,6 +30,7 @@
       <nomePagante>fulano</nomePagante>
       <saldo>10.0</saldo>
     </pagante>
+    <quitada>false</quitada>
     <devedores>
       <devedor>
         <nomeDevedor>beltrano</nomeDevedor>
