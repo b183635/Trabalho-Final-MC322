@@ -93,6 +93,8 @@ public class PainelController extends ControllerAbstrato{
         }
         Parent redirect = loader.load();
         Scene scene = new Scene(redirect);
+        janela.setResizable(false);
+        janela.setMaximized(false);
         janela.setScene(scene);
         janela.show();
     }

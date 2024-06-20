@@ -99,6 +99,8 @@ public class QuitarController extends ControllerAbstrato {
         Parent redirect = loader.load();
         Scene scene = new Scene(redirect);
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        janela.setResizable(false);
+        janela.setMaximized(false);
         janela.setScene(scene);
         janela.show();
     }

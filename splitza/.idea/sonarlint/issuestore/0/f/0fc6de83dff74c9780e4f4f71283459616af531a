@@ -7,4 +7,4 @@ java:S62010"TReplace this instanceof check and cast with 'instanceof UsuarioLog
 8
 java:S3626L"Remove this redundant jump.(ûÁİ…8¿Š™ƒ2
 t
-java:S3776d"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(äšÏäùÿÿÿÿ8›¿Š™ƒ2
+java:S3776f"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(äšÏäùÿÿÿÿ8›¿Š™ƒ2

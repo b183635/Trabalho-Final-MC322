@@ -103,6 +103,8 @@ public class TotaisController extends ControllerAbstrato {
         Scene scene = new Scene(redirect);
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
         janela.setScene(scene);
+        janela.setResizable(false);
+        janela.setMaximized(false);
         janela.show();
     }
 

@@ -13,6 +13,8 @@ public class SplitzaApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(SplitzaApplication.class.getResource("/com/example/splitza/view/tela_entrar.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 440);
         stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.setResizable(false);
         stage.show();
     }
 

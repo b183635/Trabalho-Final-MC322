@@ -56,8 +56,6 @@ H
 despesas-grupo-mc322.xml,0/0/007f43a2ffe7577628382e4474100016b8af1ea2
 K
 despesas-grupo-Shopping.xml,d/4/d4c4a17a2360293baadebf9181a7bc18b03a9a5a
-w
-Gsrc/main/java/com/example/splitza/controller/SimplificarController.java,6/7/67779ab32be1f1794db98989e40a22be2a408e78
 r
 Bsrc/main/java/com/example/splitza/controller/QuitarController.java,d/7/d750a1cdb97a36ace54846ece2b7acc529bdd72f
 H

@@ -11,64 +11,64 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.splitza.controller.GrupoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="860.0" style="-fx-background-color: FFFEE1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.splitza.controller.GrupoController">
    <children>
-      <Label fx:id="nomeGrupoLabel" layoutX="250.0" layoutY="35.0" text="Grupo">
+      <Label fx:id="nomeGrupoLabel" layoutX="351.0" layoutY="35.0" text="Grupo">
          <font>
             <Font name="Bodoni MT" size="44.0" />
          </font>
       </Label>
-      <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="493.0" layoutY="-27.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
-      <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="600.0" layoutY="437.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
-      <Label layoutX="26.0" layoutY="149.0" text="membros">
+      <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="691.0" layoutY="-18.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
+      <Circle blendMode="SRC_ATOP" fill="#ff821f" layoutX="811.0" layoutY="460.0" radius="80.0" stroke="#ff821f" strokeType="INSIDE" />
+      <Label layoutX="48.0" layoutY="150.0" text="membros">
          <font>
             <Font name="Bodoni MT" size="25.0" />
          </font>
       </Label>
-      <ListView fx:id="membrosListView" layoutX="6.0" layoutY="188.0" prefHeight="160.0" prefWidth="160.0" style="-fx-background-color: FFD5AA;" />
-      <Label layoutX="272.0" layoutY="105.0" text="histórico">
+      <ListView fx:id="membrosListView" layoutX="27.0" layoutY="184.0" prefHeight="160.0" prefWidth="160.0" style="-fx-background-color: FFD5AA;" />
+      <Label layoutX="373.0" layoutY="109.0" text="histórico">
          <font>
             <Font name="Bodoni MT" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="477.0" layoutY="145.0" mnemonicParsing="false" onAction="#onTotaisButtonClick" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: FFD5AA;" text="Totais">
+      <Button layoutX="683.0" layoutY="146.0" mnemonicParsing="false" onAction="#onTotaisButtonClick" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: FFD5AA;" text="Totais">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="477.0" layoutY="201.0" mnemonicParsing="false" onAction="#onSaldosButtonClick" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: FFD5AA;" text="Saldos">
+      <Button layoutX="683.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSaldosButtonClick" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: FFD5AA;" text="Saldos">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="237.0" layoutY="357.0" mnemonicParsing="false" onAction="#onAdicionarButtonClick" prefHeight="31.0" prefWidth="160.0" style="-fx-background-color: FFD5AA;" text="adicionar despesa">
+      <Button layoutX="356.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAdicionarButtonClick" prefHeight="31.0" prefWidth="160.0" style="-fx-background-color: FFD5AA;" text="adicionar despesa">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="476.0" layoutY="98.0" text="consultar">
+      <Label layoutX="673.0" layoutY="109.0" text="consultar">
          <font>
             <Font name="Bodoni MT" size="25.0" />
          </font>
       </Label>
-      <TableView layoutX="200.0" layoutY="149.0" prefHeight="200.0" prefWidth="227.0" style="-fx-background-color: ffd5aa;" fx:id="historicoTableView">
+      <TableView fx:id="historicoTableView" layoutX="218.0" layoutY="146.0" prefHeight="259.0" prefWidth="437.0" style="-fx-background-color: ffd5aa;">
         <columns>
-          <TableColumn prefWidth="75.0" text="data" fx:id="dataTableColumn" />
-          <TableColumn prefWidth="75.0" text="despesa" fx:id="despesaTableColumn"/>
-            <TableColumn prefWidth="75.0" text="status" fx:id="statusTableColumn"/>
+          <TableColumn fx:id="dataTableColumn" prefWidth="67.0" text="data" />
+          <TableColumn fx:id="despesaTableColumn" prefWidth="250.0" text="despesa" />
+            <TableColumn fx:id="statusTableColumn" prefWidth="118.0" text="status" />
         </columns>
       </TableView>
-      <ImageView fitHeight="259.0" fitWidth="274.0" layoutX="-41.0" layoutY="-6.0">
+      <ImageView fitHeight="259.0" fitWidth="274.0" layoutX="-30.0" layoutY="-40.0">
          <image>
             <Image url="@SPLITZA__2_-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="SRC_ATOP" fitHeight="143.0" fitWidth="161.0" layoutX="450.0" layoutY="253.0">
+      <ImageView blendMode="SRC_ATOP" fitHeight="143.0" fitWidth="161.0" layoutX="699.0" layoutY="242.0">
          <image>
             <Image url="@SPLITZA__1_-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button layoutX="48.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: FFD5AA;" text="voltar" onAction="#onVoltarButtonClick">
+      <Button layoutX="78.0" layoutY="366.0" mnemonicParsing="false" onAction="#onVoltarButtonClick" style="-fx-background-color: FFD5AA;" text="voltar">
          <font>
             <Font size="14.0" />
          </font>

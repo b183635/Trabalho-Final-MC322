@@ -70,6 +70,8 @@ public class EntrarController extends ControllerAbstrato{
         Parent redirect = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         Scene scene = new Scene(redirect);
         Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        janela.setResizable(false);
+        janela.setMaximized(false);
         janela.setScene(scene);
         janela.show();
     }
