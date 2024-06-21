@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Usuario>
-  <nome>abc</nome>
+  <nome>lucca</nome>
   <saldo>0.0</saldo>
-  <email>abc@</email>
+  <email>lucca@</email>
   <senha>abc</senha>
   <logado>true</logado>
 </Usuario>

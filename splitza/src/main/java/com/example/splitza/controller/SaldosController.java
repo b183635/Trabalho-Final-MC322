@@ -103,9 +103,9 @@ public class SaldosController extends ControllerAbstrato {
                 }
             }
             if(totalPago - totalDivida > 0){
-                saldosListView.getItems().add(membro + " recebe de volta R$" + (totalPago - totalDivida) + " no total");
+                saldosListView.getItems().add(membro + " recebe de volta R$" + String.format("%.2f", (totalPago - totalDivida)) + " no total");
             } else if(totalPago - totalDivida < 0){
-                saldosListView.getItems().add(membro + " deve R$" + (totalDivida - totalPago) + " no total");
+                saldosListView.getItems().add(membro + " deve R$" + String.format("%.2f", (totalDivida - totalPago)) + " no total");
             } else {
                 saldosListView.getItems().add(membro + " não tem dívidas");
             }

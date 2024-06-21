@@ -116,7 +116,7 @@ public class PainelController extends ControllerAbstrato{
                             despesa.getDevedores().forEach(usuario -> {
                                 if (!usuario.getNome().equals(usuarioLogado.getNome())) {
                                     usuario.setSaldo(-usuario.getSaldo());
-                                    devemVoceListView.getItems().add(usuario.getNome() + " deve a você - R$" + String.format("%.2f", despesa.getValor()) + " em " + despesa.getNomeGrupo());
+                                    devemVoceListView.getItems().add(usuario.getNome() + " deve a você R$" + String.format("%.2f", usuario.getSaldo()) + " em " + despesa.getNomeGrupo());
                                 }
                             });
                         }
@@ -128,7 +128,7 @@ public class PainelController extends ControllerAbstrato{
                             despesa.getDevedores().forEach(usuario -> {
                                 if (usuario.getNome().equals(usuarioLogado.getNome()) && !usuario.getNome().equals(despesa.getPagante().getNome())) {
                                     usuario.setSaldo(-usuario.getSaldo());
-                                    voceDeveListView.getItems().add("Você deve a " + despesa.getPagante().getNome() + " - R$" + String.format("%.2f", usuario.getSaldo()) + " em " + despesa.getNomeGrupo());
+                                    voceDeveListView.getItems().add("Você deve a " + despesa.getPagante().getNome() + " R$" + String.format("%.2f", usuario.getSaldo()) + " em " + despesa.getNomeGrupo());
                                 }
 
                             });

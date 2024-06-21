@@ -65,8 +65,10 @@ public class CriarGrupoController extends ControllerAbstrato{
     @FXML
     protected void onAdicionarButtonClick(ActionEvent event) {
         String nome = nomeMembroTxt.getText();
-        membrosListView.getItems().add(nome);
-        nomeMembroTxt.clear();
+        if(!nome.isBlank() && !membrosListView.getItems().contains(nome)){
+            membrosListView.getItems().add(nome);
+            nomeMembroTxt.clear();
+        }
     }
 
     protected void redirectWindow(ActionEvent event, String path) throws IOException {

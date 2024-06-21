@@ -60,26 +60,28 @@ public class TotaisController extends ControllerAbstrato {
             totaisGrupoLbl.setText("R$" + totalGrupo);
 
             double totalUsuarioLogado = despesas.stream()
-                    .filter(despesa -> despesa.getPagante().equals(usuarioLogado.getNome()))
+                    .filter(despesa -> despesa.getPagante().getNome().equals(usuarioLogado.getNome()))
                     .mapToDouble(Despesa::getValor)
                     .sum();
             totalUsuarioLogadoLbl.setText("R$" + totalUsuarioLogado);
             double aux = 0;
             for(Despesa d : despesas){
-                for(Usuario u : d.getDevedores()){
-                    if(u.getNome().equals(usuarioLogado.getNome())){
-                        aux -= u.getSaldo();
+                if(!d.getPagante().getNome().equals(usuarioLogado.getNome())){
+                    for(Usuario u : d.getDevedores()){
+                        if(u.getNome().equals(usuarioLogado.getNome())){
+                            aux -= u.getSaldo();
+                        }
                     }
                 }
             }
             dividasLbl.setText("R$" + aux);
 
             double saldo = totalUsuarioLogado - aux;
-            if(saldo > 0){
-                saldoLbl.setText("R$" + saldo);
+            if(saldo >= 0){
+                saldoLbl.setText("R$" + String.format("%.2f", saldo));
                 financasLbl.setText("devem a você");
             } else {
-                saldoLbl.setText("R$" + -saldo);
+                saldoLbl.setText("R$" + String.format("%.2f", -saldo));
                 financasLbl.setText("você deve");
             }
         }

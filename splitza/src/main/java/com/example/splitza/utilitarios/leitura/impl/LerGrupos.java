@@ -52,7 +52,6 @@ public class LerGrupos implements I_Arquivo<Grupo> {
                 grupos.add(grupo);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
         return grupos;
@@ -110,7 +109,7 @@ public class LerGrupos implements I_Arquivo<Grupo> {
             // Transform the document into XML and write it to the file
             transformer.transform(domSource, streamResult);
         } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
     }
 }

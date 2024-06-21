@@ -63,8 +63,7 @@ public class LerUsuarios implements I_Arquivo<UsuarioAbstrato> {
                 usuarios.add(user);
             }
         } catch (Exception e) {
-            System.err.println(" Erro ao ler o arquivo : " + e.getMessage());
-            e.printStackTrace();
+            return null;
 
         }
         return usuarios;
@@ -113,7 +112,7 @@ public class LerUsuarios implements I_Arquivo<UsuarioAbstrato> {
 
             transformer.transform(domSource, streamResult);
         } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
     }
 }

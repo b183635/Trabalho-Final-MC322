@@ -57,7 +57,6 @@ public class LerDespesas implements I_Arquivo<Despesa> {
                 despesas.add(despesa);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
         return despesas;
@@ -142,7 +141,7 @@ public class LerDespesas implements I_Arquivo<Despesa> {
 
             transformer.transform(domSource, streamResult);
         } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
     }
 

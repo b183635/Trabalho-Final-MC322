@@ -23,9 +23,6 @@ b
 2src/main/java/com/example/splitza/model/Grupo.java,4/f/4f917b25b4fe6c6e3988d403fdb33027c4c91920
 y
 Isrc/main/java/com/example/splitza/utilitarios/leitura/impl/LerGrupos.java,f/8/f8f695619b7f27aff214b280029cd1d4e1c5e4a0
-:
-
-grupos.xml,4/a/4a661c66d09ea3cc01dc6508fb603f15f4f16be3
 q
 Asrc/main/java/com/example/splitza/controller/GrupoController.java,9/6/96a0a022385f921d4b774c99be5bf6cd0b075bec
 d
@@ -42,21 +39,13 @@ l
 Ksrc/main/java/com/example/splitza/utilitarios/leitura/impl/LerDespesas.java,3/e/3ec22cd2070581ecf7e8bb44a953712b36d5f8ab
 f
 6src/main/java/com/example/splitza/model/Historico.java,1/7/17380c9ef4e19bdcc690dd07c51b00e6e54f5d2c
-J
-despesas-grupo-Passeio.xml,0/6/06bf01e20e15c725e58679713261d23a5792b840
 r
 Bsrc/main/java/com/example/splitza/controller/TotaisController.java,b/8/b85c454513050bf6d219af82049ed156f60ef965
 t
 Dsrc/main/java/com/example/splitza/controller/ControllerAbstrato.java,e/c/ec945cb1060df2615f3c62229ce70f8827326af9
 r
 Bsrc/main/java/com/example/splitza/controller/SaldosController.java,7/e/7eb2467b26113d6da8eb9506c4ccc8f5027dab3b
-L
-despesas-grupo-Comprinha.xml,3/2/3229cc2100edf1ae219bda51549018e1cc669577
-H
-despesas-grupo-mc322.xml,0/0/007f43a2ffe7577628382e4474100016b8af1ea2
-K
-despesas-grupo-Shopping.xml,d/4/d4c4a17a2360293baadebf9181a7bc18b03a9a5a
 r
 Bsrc/main/java/com/example/splitza/controller/QuitarController.java,d/7/d750a1cdb97a36ace54846ece2b7acc529bdd72f
-H
-despesas-grupo-teste.xml,c/9/c90945007f6eb12442ca00b93d77ea6cea812719
+J
+despesas-grupo-Grupo 1.xml,e/1/e1aa8f8cc31babecc8d0667f9d304dd33ea17b03

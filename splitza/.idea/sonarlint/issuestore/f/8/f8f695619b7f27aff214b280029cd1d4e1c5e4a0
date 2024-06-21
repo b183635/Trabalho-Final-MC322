@@ -2,9 +2,11 @@
 P
 java:S2755"3Disable access to external entities in XML parsing.(²µŸš8ë¢€ï2
 P
-java:S2755e"3Disable access to external entities in XML parsing.(Ý‰Ë–8ë¢€ï2
+java:S2755d"3Disable access to external entities in XML parsing.(Ý‰Ë–8ë¢€ï2
 H
-java:S11688"+Return an empty collection instead of null.(¥¹ï8Èñ•–‚2
+java:S11687"+Return an empty collection instead of null.(¥¹ï8Èñ•–‚2
+8
+java:S3626p"Remove this redundant jump.(ûÁÝ…8ì­›Çƒ2
 `
 java:S1128">Remove this unused import 'com.example.splitza.model.Despesa'.(´Àºüøÿÿÿÿ8™ò•–‚2
 `

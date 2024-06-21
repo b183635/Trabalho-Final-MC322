@@ -137,14 +137,14 @@ public class GrupoController extends ControllerAbstrato{
         statusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         grupo.getDespesas().forEach(despesa -> {
             if (despesa.getPagante().getNome().equals(usuario.getNome())) {
-                data.add(new Historico(despesa.getData(), " Você pagou R$" + despesa.getValor(), "Você emprestou " + despesa.getPagante().getSaldo()));
+                data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + " Você pagou R$" + despesa.getValor(), "Você emprestou " + despesa.getPagante().getSaldo()));
             } else if (despesa.getDevedores().stream().anyMatch(u -> u.getNome().equals(usuario.getNome()))) {
                 final double saldo = -(despesa.getDevedores().stream().filter(u -> u.getNome().equals(usuario.getNome())).findFirst().get().getSaldo());
                 if(despesa.isQuitada()){
-                    data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "quitada"));
+                    data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "quitada"));
                 }
                 else
-                    data.add(new Historico(despesa.getData(), despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "Você pegou emprestado R$ " + saldo));
+                    data.add(new Historico(despesa.getData(), despesa.getNome() + ": " + despesa.getPagante().getNome() + " pagou R$" + despesa.getValor(), "Você pegou emprestado R$ " + saldo));
             }
             else{
                 if (despesa.isQuitada()){

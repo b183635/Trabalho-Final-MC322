@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Grupos>
   <Grupo>
-    <nome>Passeio</nome>
+    <nome>Grupo 1</nome>
     <membros>
-      <membro>abc</membro>
-      <membro>fulano</membro>
-      <membro>beltrano</membro>
-      <membro>ciclano</membro>
-    </membros>
-  </Grupo>
-  <Grupo>
-    <nome>Comprinha</nome>
-    <membros>
-      <membro>abc</membro>
-      <membro>alicia</membro>
       <membro>lucca</membro>
-    </membros>
-  </Grupo>
-  <Grupo>
-    <nome>teste</nome>
-    <membros>
-      <membro>abc</membro>
-      <membro>fulano</membro>
-      <membro>beltrano</membro>
-    </membros>
-  </Grupo>
-  <Grupo>
-    <nome>mc322</nome>
-    <membros>
-      <membro>abc</membro>
-      <membro>ciclano</membro>
-      <membro>beltrano</membro>
-    </membros>
-  </Grupo>
-  <Grupo>
-    <nome>Shopping</nome>
-    <membros>
-      <membro>abc</membro>
-      <membro>alicia</membro>
-      <membro>pai</membro>
-      <membro>mae</membro>
+      <membro>membro 1</membro>
+      <membro>membro 2</membro>
+      <membro>membro  3</membro>
+      <membro>membro 4</membro>
+      <membro>membro 5</membro>
+      <membro>membro 6</membro>
+      <membro>membro 7</membro>
+      <membro>membro 8</membro>
     </membros>
   </Grupo>
 </Grupos>

@@ -62,7 +62,7 @@ public class QuitarController extends ControllerAbstrato {
                             .map(Usuario::getNome)
                             .filter(nome -> !nome.equals(despesa.getPagante().getNome()))
                             .collect(Collectors.joining(", "));
-                    String dividaString = despesa.getPagante().getNome() + " recebe  R$" + String.format("%.2f", Math.abs(despesa.getValor())) + " de: " + devedores;
+                    String dividaString = despesa.getPagante().getNome() + " recebe R$" + String.format("%.2f", Math.abs(despesa.getDevedores().getFirst().getSaldo())) + " de: " + devedores;
                     if (selectedItems.contains(dividaString)) {
                         dividasListView.getItems().remove(dividaString);
                         despesa.setQuitada(true);
@@ -112,7 +112,7 @@ public class QuitarController extends ControllerAbstrato {
                     .filter(nome -> !nome.equals(despesa.getPagante().getNome()))
                     .collect(Collectors.joining(", "));
 
-            dividasListView.getItems().add(despesa.getPagante().getNome() + " recebe  R$" + String.format("%.2f", Math.abs(despesa.getValor())) + " de: " + devedores);
+            dividasListView.getItems().add(despesa.getPagante().getNome() + " recebe R$" + String.format("%.2f", Math.abs(despesa.getDevedores().getFirst().getSaldo())) + " de: " + devedores);
         }
 
     }

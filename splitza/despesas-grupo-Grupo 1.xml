@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Despesas>
+  <Despesa>
+    <nome>Despesa 1</nome>
+    <nomeGrupo>Grupo 1</nomeGrupo>
+    <data>jun. 21</data>
+    <valor>100.0</valor>
+    <pagante>
+      <nomePagante>lucca</nomePagante>
+      <saldo>75.0</saldo>
+    </pagante>
+    <quitada>false</quitada>
+    <devedores>
+      <devedor>
+        <nomeDevedor>lucca</nomeDevedor>
+        <saldo>-25.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro 1</nomeDevedor>
+        <saldo>-25.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro  3</nomeDevedor>
+        <saldo>-25.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro 6</nomeDevedor>
+        <saldo>-25.0</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+  <Despesa>
+    <nome>Despesa 2</nome>
+    <nomeGrupo>Grupo 1</nomeGrupo>
+    <data>jun. 21</data>
+    <valor>100.0</valor>
+    <pagante>
+      <nomePagante>membro 1</nomePagante>
+      <saldo>100.0</saldo>
+    </pagante>
+    <quitada>false</quitada>
+    <devedores>
+      <devedor>
+        <nomeDevedor>membro 5</nomeDevedor>
+        <saldo>-50.0</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro 6</nomeDevedor>
+        <saldo>-50.0</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+  <Despesa>
+    <nome>Despesa 3</nome>
+    <nomeGrupo>Grupo 1</nomeGrupo>
+    <data>jun. 21</data>
+    <valor>200.0</valor>
+    <pagante>
+      <nomePagante>membro 4</nomePagante>
+      <saldo>200.0</saldo>
+    </pagante>
+    <quitada>true</quitada>
+    <devedores>
+      <devedor>
+        <nomeDevedor>lucca</nomeDevedor>
+        <saldo>-66.66666666666667</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro 1</nomeDevedor>
+        <saldo>-66.66666666666667</saldo>
+      </devedor>
+      <devedor>
+        <nomeDevedor>membro 2</nomeDevedor>
+        <saldo>-66.66666666666667</saldo>
+      </devedor>
+    </devedores>
+  </Despesa>
+</Despesas>
